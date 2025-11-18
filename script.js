@@ -166,20 +166,12 @@ function handleScrollAnimations() {
     });
 }
 
-// Typing effect for hero title
-function typeWriter(element, text, speed = 100) {
-    // Store the original HTML content
-    const originalHTML = element.innerHTML;
-}
-
 // Update cosmic background based on scroll position
 function updateCosmicBackground() {
     const scrollTop = window.pageYOffset;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     const scrollProgress = scrollTop / (documentHeight - windowHeight);
-    
-    console.log('Scroll progress:', scrollProgress); // Debug log
     
     const cosmicBg = document.querySelector('.cosmic-bg');
     if (cosmicBg) {
@@ -210,47 +202,6 @@ function updateCosmicBackground() {
             )`;
         }
     }
-}
-
-// Typing effect function
-function typeWriter(element, text, speed = 100) {
-    // Store the original HTML content
-    const originalHTML = element.innerHTML;
-    
-    // Create a temporary element to work with
-    const tempElement = element.cloneNode(true);
-    tempElement.innerHTML = '';
-    
-    // Extract just the text content, preserving HTML structure
-    const textContent = element.textContent || element.innerText;
-    
-    let i = 0;
-    
-    function type() {
-        if (i < textContent.length) {
-            tempElement.innerHTML += textContent.charAt(i);
-            element.innerHTML = tempElement.innerHTML;
-            i++;
-            setTimeout(type, speed);
-        } else {
-            // Restore the original HTML with proper highlighting
-            element.innerHTML = originalHTML;
-        }
-    }
-    
-    type();
-}
-
-// Initialize typing effect when page loads
-function initTypingEffect() {
-    // Disabled typing effect to preserve HTML structure
-    // const heroTitle = document.querySelector('.hero-title');
-    // if (heroTitle) {
-    //     const originalText = heroTitle.innerHTML;
-    //     setTimeout(() => {
-    //         typeWriter(heroTitle, originalText, 50);
-    //         }, 500);
-    // }
 }
 
 // Parallax effect for background elements
@@ -324,9 +275,6 @@ function init() {
     // Add fade-in classes
     addFadeInClass();
     
-    // Initialize typing effect
-    initTypingEffect();
-    
     // Initialize mobile menu
     initMobileMenu();
     
@@ -396,6 +344,34 @@ function init() {
     updateCosmicBackground(); // Ensure correct initial background
 }
 
+// Create twinkling stars
+function createTwinklingStars() {
+    const numberOfStars = 40; // Number of twinkling stars to create
+    
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'twinkling-star';
+        
+        // Random size between 2px and 5px (thicker stars)
+        const size = 2 + Math.random() * 3;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        // Random position across the viewport
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        
+        // Random animation delay for variety (0 to 3 seconds)
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        // Random animation duration for more natural effect (2 to 4 seconds)
+        const duration = 2 + Math.random() * 2;
+        star.style.animationDuration = duration + 's';
+        
+        document.body.appendChild(star);
+    }
+}
+
 // Add some interactive elements
 function addInteractiveElements() {
     // Add hover effects to project cards
@@ -435,202 +411,134 @@ function addInteractiveElements() {
     });
 }
 
-// Add CSS for light theme
-function addLightThemeCSS() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .light-theme {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-tertiary: #e9ecef;
-            --text-primary: #212529;
-            --text-secondary: #495057;
-            --text-muted: #6c757d;
-            --border-color: #dee2e6;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-        
-        .light-theme .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-bottom-color: #dee2e6;
-        }
-        
-        .light-theme .nav-link {
-            background: #f8f9fa;
-            color: #495057;
-        }
-        
-        .light-theme .nav-link:hover {
-            background: var(--primary-color);
-            color: var(--bg-primary);
-        }
-        
-        .light-theme .theme-toggle {
-            background: #f8f9fa;
-            color: #495057;
-        }
-        
-        .light-theme .section {
-            background: #ffffff;
-        }
-        
-        .light-theme .timeline-content,
-        .light-theme .skill-category,
-        .light-theme .project-card,
-        .light-theme .info-item,
-        .light-theme .contact-method {
-            background: #f8f9fa;
-            border-color: #dee2e6;
-        }
-        
-        .light-theme .skill-tag {
-            background: #e9ecef;
-            color: #495057;
-            border-color: #dee2e6;
-        }
-        
-        .light-theme .project-tech span {
-            background: #e9ecef;
-            color: var(--primary-color);
-            border-color: #dee2e6;
-        }
-        
-        .light-theme .footer {
-            background: #f8f9fa;
-            border-top-color: #dee2e6;
-        }
-    `;
-    document.head.appendChild(style);
-}
-
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Add light theme CSS
-    addLightThemeCSS();
-    
     // Initialize all functionality
     init();
+    
+    // Create twinkling stars
+    createTwinklingStars();
     
     // Add interactive elements
     addInteractiveElements();
     
     // Add some additional animations
-setTimeout(() => {
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        heroContent.style.opacity = '0';
-        heroContent.style.transform = 'translateY(30px)';
-        heroContent.style.transition = 'all 1s ease';
-        
-        setTimeout(() => {
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-        }, 100);
-    }
-}, 100);
-
-// Shooting stars functionality
-function createShootingStar() {
-    const star = document.createElement('div');
-    star.className = 'shooting-star';
-    
-    // Start above the screen and end below it for seamless effect
-    const startX = Math.random() * window.innerWidth;
-    const startY = -100; // Start above the screen
-    
-    star.style.left = startX + 'px';
-    star.style.top = startY + 'px';
-    
-    document.body.appendChild(star);
-    
-    // Remove star after animation completes
     setTimeout(() => {
-        if (star.parentNode) {
-            star.parentNode.removeChild(star);
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            heroContent.style.transition = 'all 1s ease';
+            
+            setTimeout(() => {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 100);
         }
-    }, 3000); // Match the CSS animation duration
-}
+    }, 100);
 
-// Create shooting stars occasionally
-function startShootingStars() {
-    // Create a shooting star every 8-15 seconds
-    setInterval(() => {
-        if (Math.random() > 0.8) { // 20% chance
-            createShootingStar();
-        }
-    }, 8000 + Math.random() * 7000);
-}
+    // Shooting stars functionality
+    function createShootingStar() {
+        const star = document.createElement('div');
+        star.className = 'shooting-star';
+        
+        // Start above the screen and end below it for seamless effect
+        const startX = Math.random() * window.innerWidth;
+        const startY = -100; // Start above the screen
+        
+        star.style.left = startX + 'px';
+        star.style.top = startY + 'px';
+        
+        document.body.appendChild(star);
+        
+        // Remove star after animation completes
+        setTimeout(() => {
+            if (star.parentNode) {
+                star.parentNode.removeChild(star);
+            }
+        }, 3000); // Match the CSS animation duration
+    }
 
-// Start shooting stars after page loads
-setTimeout(startShootingStars, 3000);
+    // Create shooting stars occasionally
+    function startShootingStars() {
+        // Create a shooting star every 8-15 seconds
+        setInterval(() => {
+            if (Math.random() > 0.8) { // 20% chance
+                createShootingStar();
+            }
+        }, 8000 + Math.random() * 7000);
+    }
 
-// Add some CSS animations
-const additionalCSS = `
-    @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideInFromRight {
-        0% {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes fadeInUp {
-        0% {
-            transform: translateY(30px);
-            opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-content {
-        animation: slideInFromLeft 0.8s ease-out;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-content {
-        animation: slideInFromRight 0.8s ease-out;
-    }
-    
-    .skill-category, .project-card {
-        animation: fadeInUp 0.8s ease-out;
-    }
-    
-    .skill-category:nth-child(odd) {
-        animation-delay: 0.1s;
-    }
-    
-    .skill-category:nth-child(even) {
-        animation-delay: 0.2s;
-    }
-    
-    .project-card:nth-child(odd) {
-        animation-delay: 0.1s;
-    }
-    
-    .project-card:nth-child(even) {
-        animation-delay: 0.2s;
-    }
-`;
+    // Start shooting stars after page loads
+    setTimeout(startShootingStars, 3000);
 
-// Add the additional CSS
-const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalCSS;
-document.head.appendChild(styleSheet);
+    // Add some CSS animations
+    const additionalCSS = `
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            animation: slideInFromLeft 0.8s ease-out;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            animation: slideInFromRight 0.8s ease-out;
+        }
+        
+        .skill-category, .project-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .skill-category:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        .skill-category:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .project-card:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        .project-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+    `;
+
+    // Add the additional CSS
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = additionalCSS;
+    document.head.appendChild(styleSheet);
 
 }); // Close DOMContentLoaded event listener
