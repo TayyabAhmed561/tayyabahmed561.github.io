@@ -5,7 +5,7 @@
 
 class ArtLoader {
     constructor() {
-        this.artBasePath = 'media/perplexity/';
+        this.artBasePath = '/media/perplexity/';
         this.breakpoints = {
             mobile: 768,
             tablet: 1024,

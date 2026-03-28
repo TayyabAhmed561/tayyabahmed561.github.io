@@ -35,7 +35,7 @@ class CosmicArt {
 
         // Saturn - at the top right, stays at top as you scroll (moves up with parallax)
         const saturn = this.createArtElement('saturn', {
-            image: 'media/perplexity/perpSaturn.png',
+            image: '/media/perplexity/perpSaturn.png',
             position: { x: '85%', y: '18%' },  // Moved right by ~14%
             size: { width: '400px', height: 'auto' },
             opacity: 0.5,
@@ -60,7 +60,7 @@ class CosmicArt {
 
         starPositions.forEach((pos, index) => {
             const star = this.createArtElement(`star-${index}`, {
-                image: 'media/perplexity/perpStar.png',
+                image: '/media/perplexity/perpStar.png',
                 position: { x: pos.x, y: pos.y },
                 size: { width: pos.size, height: 'auto' },
                 opacity: 0.3 + (index % 2) * 0.1,
@@ -160,7 +160,7 @@ class CosmicArt {
         // === ACTUAL IMAGE (apply blend-mode HERE to avoid edge halos) ===
         // Use same approach as Saturn/Stars - fixed size, CSS handles responsive
         const img = document.createElement('img');
-        img.src = 'media/perplexity/perpBlackHole.png';
+        img.src = '/media/perplexity/perpBlackHole.png';
         img.alt = 'Black Hole';
         img.style.cssText = `
             width: 900px;
