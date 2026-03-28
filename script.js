@@ -24,12 +24,6 @@
             btn.setAttribute("aria-selected", match ? "true" : "false");
         });
 
-        if (id === "gallery") {
-            requestAnimationFrame(() => {
-                document.dispatchEvent(new CustomEvent("gallery-layout-reflow"));
-            });
-        }
-
         syncPanelFooterNav(id);
     }
 
