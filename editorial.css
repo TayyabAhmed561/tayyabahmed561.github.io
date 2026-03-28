@@ -1532,7 +1532,6 @@ main {
 .panel[data-panel="featured"] .projects-deep-dives,
 .panel[data-panel="featured"] .featured-walkthroughs,
 .panel[data-panel="featured"] .featured-previews,
-.panel[data-panel="featured"] .featured-media,
 .panel[data-panel="projects"] .project-list,
 .panel[data-panel="experience"] .experience-list,
 .panel[data-panel="education"] .education-block,
@@ -1703,8 +1702,7 @@ main {
 }
 
 .visual-panel .featured-highlight__action:hover,
-.visual-panel .featured-highlight__action--secondary:hover,
-.visual-panel .featured-media__link:hover {
+.visual-panel .featured-highlight__action--secondary:hover {
     color: var(--link-accent);
     border-bottom-color: rgba(150, 200, 215, 0.45);
     text-shadow: 0 0 22px rgba(130, 195, 220, 0.18);
@@ -1730,9 +1728,8 @@ main {
 }
 
 .featured-previews {
-    margin: 1.1rem 0 1rem;
-    padding-bottom: 1.05rem;
-    border-bottom: 1px solid rgba(120, 160, 190, 0.1);
+    margin: 1.1rem 0 0;
+    padding-bottom: 0.35rem;
 }
 
 .featured-previews__list {
@@ -1788,31 +1785,6 @@ main {
     color: rgba(235, 248, 255, 0.95);
     border-bottom-color: rgba(150, 200, 215, 0.4);
     text-shadow: 0 0 18px rgba(130, 195, 220, 0.15);
-}
-
-.featured-media {
-    margin-top: 0.35rem;
-}
-
-.featured-media__nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem 1.1rem;
-}
-
-.featured-media__link {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--link-accent-soft);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(100, 150, 175, 0.24);
-    padding-bottom: 2px;
-    transition:
-        color 0.22s var(--ease-out),
-        border-color 0.22s,
-        text-shadow 0.22s;
 }
 
 /* —— Featured: project walkthroughs (embedded video) —— */

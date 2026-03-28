@@ -198,27 +198,6 @@ export default function HomePage() {
                     </li>
                 </ul>
             </section>
-
-            <section className="featured-media" aria-label="Media and external links">
-                <p className="featured-section__label">Media &amp; links</p>
-                <nav className="featured-media__nav" aria-label="Proof and demos">
-                    <a href="https://github.com/TayyabAhmed561" target="_blank" rel="noopener noreferrer" className="featured-media__link">
-                        GitHub
-                    </a>
-                    <a href="https://github.com/TayyabAhmed561/DraftPilot" target="_blank" rel="noopener noreferrer" className="featured-media__link">
-                        DraftPilot
-                    </a>
-                    <a href="https://devpost.com/software/mindsync-qny03a" target="_blank" rel="noopener noreferrer" className="featured-media__link">
-                        MindSync demo
-                    </a>
-                    <a href="https://devpost.com/software/safesteps-x93v1t" target="_blank" rel="noopener noreferrer" className="featured-media__link">
-                        SafeSteps (Devpost)
-                    </a>
-                    <a href="https://dorahacks.io/buidl/23036" target="_blank" rel="noopener noreferrer" className="featured-media__link">
-                        SafeSteps (BUIDL)
-                    </a>
-                </nav>
-            </section>
         </div>
     );
 }
