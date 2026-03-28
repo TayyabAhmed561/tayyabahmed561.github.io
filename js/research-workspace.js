@@ -1,47 +1,47 @@
 /**
  * Research workspace: append entries to RESEARCH_ENTRIES, then call researchWorkspaceRefresh().
  *
+ * Sections: experiments, paperAttempts, openQuestions.
+ * Published notes live in React (src/data/researchNotes.ts) with routes /research/:slug.
+ *
+ * Future extension (openQuestions): replace renderFeed empty branch with API-driven list + optional
+ * submission UI; keep SECTION_KEYS and setResearchSubtab wiring stable.
+ *
  * Entry shape (all fields optional except id, date, title, body):
  * {
  *   id: string,
  *   date: "YYYY-MM-DD",
  *   title: string,
- *   body: string | string[],  // string: split on blank lines into paragraphs
+ *   body: string | string[],
+ *   category?: string,
  *   takeaway?: string,
  *   tags?: string[],
  *   relatedProject?: { label: string, href: string }
  * }
  */
 (function () {
-    const SECTION_KEYS = ["logs", "insights", "experiments", "paperAttempts", "openQuestions"];
+    const SECTION_KEYS = ["experiments", "paperAttempts", "openQuestions"];
 
     const TYPE_LABELS = {
-        logs: "Research Log",
-        insights: "Insight",
         experiments: "Experiment",
         paperAttempts: "Paper Attempt",
         openQuestions: "Open Question",
     };
 
     const EMPTY_HINTS = {
-        logs: "Research logs, sketches, and reading notes will appear here as they are published.",
-        insights: "Concise breakdowns of ideas and methods will appear here over time.",
         experiments: "Experiment notes and small technical studies will be added here as they are documented.",
         paperAttempts: "Implementation-oriented paper explorations will appear here over time.",
-        openQuestions: "Open questions and threads I am working through will appear here when they are written up.",
+        openQuestions:
+            "Research questions and threads I am working through will appear here when they are written up.",
     };
 
     const SUBSECTION_NAV_LABELS = {
-        logs: "Logs",
-        insights: "Insights",
         experiments: "Experiments",
         paperAttempts: "Paper Attempts",
         openQuestions: "Open Questions",
     };
 
     const RESEARCH_ENTRIES = {
-        logs: [],
-        insights: [],
         experiments: [],
         paperAttempts: [],
         openQuestions: [],
@@ -76,6 +76,9 @@
         const typeLabel = TYPE_LABELS[sectionKey];
         const paras = bodyToParagraphs(entry);
         const bodyHtml = paras.map((p) => `<p>${escapeHtml(p)}</p>`).join("");
+        const category = entry.category
+            ? `<span class="research-entry__sep" aria-hidden="true">\u00b7</span><span class="research-entry__category">${escapeHtml(entry.category)}</span>`
+            : "";
         const takeaway = entry.takeaway
             ? `<p class="research-entry__takeaway"><span class="research-entry__takeaway-label">Takeaway</span> ${escapeHtml(entry.takeaway)}</p>`
             : "";
@@ -95,6 +98,7 @@
             <article class="research-entry" data-research-entry-id="${escapeHtml(entry.id)}">
                 <div class="research-entry__meta">
                     <time class="research-entry__date" datetime="${escapeHtml(entry.date)}">${escapeHtml(formatDisplayDate(entry.date))}</time>
+                    ${category}
                     <span class="research-entry__type">${escapeHtml(typeLabel)}</span>
                 </div>
                 <h3 class="research-entry__title">${escapeHtml(entry.title)}</h3>
@@ -107,10 +111,18 @@
     }
 
     function renderEmptyState(sectionKey) {
+        const futureNote =
+            sectionKey === "openQuestions"
+                ? `<p class="research-empty__future" data-research-open-questions-placeholder>
+                    Visitor responses or threaded discussion may be added here later; for now this area stays read-only.
+                </p>`
+                : "";
+
         return `
             <div class="research-empty">
                 <p class="research-empty__title">No entries published yet.</p>
                 <p class="research-empty__hint">${escapeHtml(EMPTY_HINTS[sectionKey])}</p>
+                ${futureNote}
             </div>
         `.trim();
     }
@@ -141,7 +153,7 @@
         if (!merged.length) {
             root.innerHTML = `
                 <p class="research-workspace__latest-empty">This section is currently quiet. New research notes, experiments, and breakdowns will appear here over time.</p>
-                <p class="research-workspace__latest-quiet-mark" aria-hidden="true">· · · z z z · · ·</p>
+                <p class="research-workspace__latest-quiet-mark" aria-hidden="true">\u00b7 \u00b7 \u00b7 z z z \u00b7 \u00b7 \u00b7</p>
             `.trim();
             return;
         }
@@ -192,8 +204,8 @@
     function initSubtabs() {
         document.querySelectorAll("[data-research-subtab]").forEach((btn) => {
             btn.addEventListener("click", () => {
-                const key = btn.getAttribute("data-research-subtab");
-                if (key) setResearchSubtab(key);
+                const k = btn.getAttribute("data-research-subtab");
+                if (k) setResearchSubtab(k);
             });
         });
     }
@@ -210,6 +222,7 @@
 
     window.RESEARCH_ENTRIES = RESEARCH_ENTRIES;
     window.researchWorkspaceRefresh = researchWorkspaceRefresh;
+    window.setResearchSubtab = setResearchSubtab;
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", init);

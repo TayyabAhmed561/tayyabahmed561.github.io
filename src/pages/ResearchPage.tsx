@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { ResearchLatestActivity } from "../components/ResearchLatestActivity";
+import { ResearchNotesOverview } from "../components/ResearchNotesOverview";
 
 export default function ResearchPage() {
     useEffect(() => {
@@ -6,6 +8,11 @@ export default function ResearchPage() {
         const tryRefresh = () => {
             if (window.researchWorkspaceRefresh) {
                 window.researchWorkspaceRefresh();
+                const pending = sessionStorage.getItem("researchOpenSubtab");
+                if (pending && window.setResearchSubtab) {
+                    sessionStorage.removeItem("researchOpenSubtab");
+                    window.setResearchSubtab(pending);
+                }
                 return;
             }
             if (n++ < 80) window.setTimeout(tryRefresh, 50);
@@ -24,7 +31,9 @@ export default function ResearchPage() {
 
                 <aside className="research-workspace__latest" aria-label="Latest research activity">
                     <p className="research-workspace__latest-label">Latest activity</p>
-                    <div className="research-workspace__latest-inner" data-research-latest />
+                    <div className="research-workspace__latest-inner">
+                        <ResearchLatestActivity />
+                    </div>
                 </aside>
 
                 <div className="research-subnav" role="tablist" aria-label="Research workspace categories">
@@ -32,23 +41,12 @@ export default function ResearchPage() {
                         type="button"
                         className="research-subnav__btn is-active"
                         role="tab"
-                        id="research-tab-logs"
-                        data-research-subtab="logs"
-                        aria-controls="research-pane-logs"
+                        id="research-tab-notes"
+                        data-research-subtab="notes"
+                        aria-controls="research-pane-notes"
                         aria-selected="true"
                     >
-                        Logs
-                    </button>
-                    <button
-                        type="button"
-                        className="research-subnav__btn"
-                        role="tab"
-                        id="research-tab-insights"
-                        data-research-subtab="insights"
-                        aria-controls="research-pane-insights"
-                        aria-selected="false"
-                    >
-                        Insights
+                        Notes
                     </button>
                     <button
                         type="button"
@@ -87,24 +85,14 @@ export default function ResearchPage() {
 
                 <div className="research-panes">
                     <div
-                        id="research-pane-logs"
+                        id="research-pane-notes"
                         className="research-pane is-active"
-                        data-research-pane="logs"
+                        data-research-pane="notes"
                         role="tabpanel"
-                        aria-labelledby="research-tab-logs"
+                        aria-labelledby="research-tab-notes"
                         aria-hidden="false"
                     >
-                        <div className="research-feed" data-research-feed="logs" />
-                    </div>
-                    <div
-                        id="research-pane-insights"
-                        className="research-pane"
-                        data-research-pane="insights"
-                        role="tabpanel"
-                        aria-labelledby="research-tab-insights"
-                        aria-hidden="true"
-                    >
-                        <div className="research-feed" data-research-feed="insights" />
+                        <ResearchNotesOverview />
                     </div>
                     <div
                         id="research-pane-experiments"

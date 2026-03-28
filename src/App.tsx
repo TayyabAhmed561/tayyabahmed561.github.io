@@ -7,6 +7,7 @@ import { bindPortfolioDomEffects } from "./initDomEffects";
 import { AppShell } from "./layouts/AppShell";
 import HomePage from "./pages/HomePage";
 import ResearchPage from "./pages/ResearchPage";
+import ResearchNotePage from "./pages/ResearchNotePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import AboutPage from "./pages/AboutPage";
 import GalleryPage from "./pages/GalleryPage";
@@ -58,6 +59,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<AppShell />}>
                     <Route index element={<HomePage />} />
+                    <Route path="research/:slug" element={<ResearchNotePage />} />
                     <Route path="research" element={<ResearchPage />} />
                     <Route path="projects" element={<ProjectsPage />} />
                     <Route path="about" element={<AboutPage />} />

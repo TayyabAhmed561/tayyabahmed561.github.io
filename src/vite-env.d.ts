@@ -11,6 +11,7 @@ interface ImportMeta {
 declare global {
     interface Window {
         researchWorkspaceRefresh?: () => void;
+        setResearchSubtab?: (key: string) => void;
         RESEARCH_ENTRIES?: Record<string, unknown[]>;
     }
 }

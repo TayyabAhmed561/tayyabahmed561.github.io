@@ -494,19 +494,25 @@
                         </aside>
 
                         <div class="research-subnav" role="tablist" aria-label="Research workspace categories">
-                            <button type="button" class="research-subnav__btn is-active" role="tab" id="research-tab-logs" data-research-subtab="logs" aria-controls="research-pane-logs" aria-selected="true">Logs</button>
-                            <button type="button" class="research-subnav__btn" role="tab" id="research-tab-insights" data-research-subtab="insights" aria-controls="research-pane-insights" aria-selected="false">Insights</button>
+                            <button type="button" class="research-subnav__btn is-active" role="tab" id="research-tab-notes" data-research-subtab="notes" aria-controls="research-pane-notes" aria-selected="true">Notes</button>
                             <button type="button" class="research-subnav__btn" role="tab" id="research-tab-experiments" data-research-subtab="experiments" aria-controls="research-pane-experiments" aria-selected="false">Experiments</button>
                             <button type="button" class="research-subnav__btn" role="tab" id="research-tab-paperAttempts" data-research-subtab="paperAttempts" aria-controls="research-pane-paperAttempts" aria-selected="false">Paper Attempts</button>
                             <button type="button" class="research-subnav__btn" role="tab" id="research-tab-openQuestions" data-research-subtab="openQuestions" aria-controls="research-pane-openQuestions" aria-selected="false">Open Questions</button>
                         </div>
 
                         <div class="research-panes">
-                            <div id="research-pane-logs" class="research-pane is-active" data-research-pane="logs" role="tabpanel" aria-labelledby="research-tab-logs" aria-hidden="false">
-                                <div class="research-feed" data-research-feed="logs"></div>
-                            </div>
-                            <div id="research-pane-insights" class="research-pane" data-research-pane="insights" role="tabpanel" aria-labelledby="research-tab-insights" aria-hidden="true">
-                                <div class="research-feed" data-research-feed="insights"></div>
+                            <div id="research-pane-notes" class="research-pane is-active" data-research-pane="notes" role="tabpanel" aria-labelledby="research-tab-notes" aria-hidden="false">
+                                <div class="research-notes-preview">
+                                    <ul class="research-notes-preview__list" role="list">
+                                        <li>
+                                            <a href="/research/the-reality-of-data" class="research-notes-preview__link">
+                                                <span class="research-notes-preview__link-title">The reality of data</span>
+                                                <span class="research-notes-preview__link-meta">Mar 28, 2026 · Data · evaluation</span>
+                                                <span class="research-notes-preview__desc">Ambitious ideas often meet scarce, noisy data. On preprocessing, reproducible pipelines, and evaluation when generalization matters more than memorization.</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div id="research-pane-experiments" class="research-pane" data-research-pane="experiments" role="tabpanel" aria-labelledby="research-tab-experiments" aria-hidden="true">
                                 <div class="research-feed" data-research-feed="experiments"></div>
