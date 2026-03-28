@@ -15,6 +15,7 @@ import ContactPage from "./pages/ContactPage";
 const SCRIPT_FILES = [
     "rising-particles.js",
     "perplexity-backgrounds.js",
+    "film-strip.js",
     "research-workspace.js",
 ] as const;
 

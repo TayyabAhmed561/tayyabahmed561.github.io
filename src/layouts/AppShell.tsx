@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { SnapshotsPreview } from "../components/SnapshotsPreview";
 
 function tabClass({ isActive }: { isActive: boolean }) {
     return isActive ? "is-active" : undefined;
@@ -131,7 +130,7 @@ export function AppShell() {
 
                 <section className="sidebar-section snapshots-sidebar" aria-label="Snapshots preview">
                     <p className="snapshots-preview__label">Snapshots</p>
-                    <SnapshotsPreview />
+                    <div className="snapshots-grid" data-snapshots-preview />
                     <NavLink to="/gallery" className="snapshots-preview__cta">
                         Full gallery →
                     </NavLink>
