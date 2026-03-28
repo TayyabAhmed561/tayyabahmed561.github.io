@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DraftPilot: Deep dive · Tayyab Ahmed</title>
+    <link rel="stylesheet" href="../perplexity-theme.css">
+    <link rel="stylesheet" href="../perplexity-animations.css">
+    <link rel="stylesheet" href="../rising-particles.css">
+    <link rel="stylesheet" href="../editorial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-body">
+    <div id="static-stars-root" aria-hidden="true"></div>
+    <div id="rising-particles-root" aria-hidden="true">
+        <div class="animation-wrapper">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+        </div>
+    </div>
+
+    <div class="deep-dive-layout">
+        <a href="../index.html#featured" class="deep-dive-back">← Back to portfolio</a>
+
+        <article class="deep-dive">
+            <header class="deep-dive__header">
+                <h1 class="deep-dive__title">DraftPilot</h1>
+                <p class="deep-dive__meta">Agents · constraints · human-in-the-loop</p>
+            </header>
+
+            <section class="deep-dive__section" aria-labelledby="dp-overview">
+                <h2 id="dp-overview">Overview</h2>
+                <p>
+                    DraftPilot started from a simple frustration: writing tailored resumes and cover letters is time-consuming, and most tools either oversimplify it or generate things you can’t fully trust.
+                </p>
+                <p>
+                    The idea was to build something structured, where you can take a job description, analyze it, and generate drafts that are actually usable and editable.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="dp-difficult">
+                <h2 id="dp-difficult">What made it difficult</h2>
+                <p>
+                    One big issue with LLMs is that they can sound confident while being wrong. In a multi-step system, those small mistakes get carried forward and become harder to catch.
+                </p>
+                <p>
+                    Formatting was another challenge. Especially with LaTeX, things have to be exact. Close enough isn’t good enough.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="dp-approach">
+                <h2 id="dp-approach">Approach</h2>
+                <p>
+                    I designed it as a pipeline: parse → analyze → score → generate → review.
+                </p>
+                <p>
+                    The backend is in FastAPI, with a React frontend so each step is visible. Instead of relying on a single prompt, I broke the process into stages where each part can be inspected and adjusted.
+                </p>
+                <p>
+                    Generation is constrained using templates to keep things consistent and reduce drift.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="dp-iteration-debug">
+                <h2 id="dp-iteration-debug">Iteration and debugging</h2>
+                <p>
+                    Early versions looked good at first glance but had issues like repeated phrasing or subtle inaccuracies.
+                </p>
+                <p>
+                    I added logging between steps, tightened constraints, and limited where free-form generation was allowed. In some cases, I replaced open-ended generation with more structured outputs.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="dp-eval">
+                <h2 id="dp-eval">Evaluation</h2>
+                <p>
+                    Instead of a single metric, I evaluated based on:
+                </p>
+                <ul>
+                    <li>formatting correctness</li>
+                    <li>alignment with actual user input</li>
+                    <li>overall clarity and tone</li>
+                </ul>
+                <p>
+                    The focus was on making sure the system is reliable, not just fluent.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="dp-takeaways">
+                <h2 id="dp-takeaways">Takeaways</h2>
+                <p>
+                    The biggest lesson here was that structure matters a lot. Breaking things into clear, inspectable steps made the system much more trustworthy.
+                </p>
+                <p>
+                    It also showed me that “agents” are only useful if you can actually see and control what they’re doing.
+                </p>
+            </section>
+
+            <p class="deep-dive__footer-note">
+                Code and README are available on <a href="https://github.com/TayyabAhmed561/DraftPilot" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            </p>
+        </article>
+    </div>
+
+    <footer class="site-footer site-footer--shell">
+        <p>© 2026 Tayyab Ahmed</p>
+    </footer>
+
+    <script src="../js/rising-particles.js"></script>
+    <script src="../js/perplexity-backgrounds.js"></script>
+</body>
+</html>

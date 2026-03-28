@@ -1,0 +1,96 @@
+/* === Background stack (below UI) === */
+/* Re-enable a prefers-reduced-motion block for .particle when you finish testing */
+
+:root {
+    --rising-particle-dot: rgba(255, 255, 255, 0.88);
+}
+
+#static-stars-root {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#rising-particles-root {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.75;
+}
+
+/* Rising field: nested wrapper (absolute inside fixed root) */
+#rising-particles-root .animation-wrapper {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#rising-particles-root .particle,
+#rising-particles-root .particle::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background: transparent;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+#rising-particles-root .particle::after {
+    content: "";
+    top: 2560px;
+    left: 0;
+}
+
+#rising-particles-root .particle-1 {
+    width: 2.25px;
+    height: 2.25px;
+    -webkit-animation: animParticle 60s linear infinite;
+    animation: animParticle 60s linear infinite;
+}
+
+#rising-particles-root .particle-2 {
+    width: 3.25px;
+    height: 3.25px;
+    -webkit-animation: animParticle 120s linear infinite;
+    animation: animParticle 120s linear infinite;
+}
+
+#rising-particles-root .particle-3 {
+    width: 4.25px;
+    height: 4.25px;
+    -webkit-animation: animParticle 180s linear infinite;
+    animation: animParticle 180s linear infinite;
+}
+
+#rising-particles-root .particle-4 {
+    width: 2.25px;
+    height: 2.25px;
+    -webkit-animation: animParticle 600s linear infinite;
+    animation: animParticle 600s linear infinite;
+}
+
+@-webkit-keyframes animParticle {
+    from {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    to {
+        -webkit-transform: translateY(-2560px);
+        transform: translateY(-2560px);
+    }
+}
+
+@keyframes animParticle {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-2560px);
+    }
+}

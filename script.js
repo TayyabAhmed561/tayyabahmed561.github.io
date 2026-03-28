@@ -1,544 +1,149 @@
-// DOM Elements
-const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelectorAll('.nav-link');
-const cosmicBurst = document.getElementById('cosmic-burst');
-const sections = document.querySelectorAll('.section');
+(function () {
+    const DEFAULT_TAB = "featured";
 
-// Custom Star Cursor
-let cursorTrails = [];
-let isCursorVisible = true;
-
-function updateCursor(e) {
-    const cursor = document.getElementById('custom-cursor');
-    if (cursor && isCursorVisible) {
-        // Use clientX/clientY for viewport-relative positioning
-        const x = e.clientX - 4;
-        const y = e.clientY - 4;
-        
-        // Ensure cursor stays within viewport bounds
-        const maxX = window.innerWidth - 8;
-        const maxY = window.innerHeight - 8;
-        
-        const clampedX = Math.max(0, Math.min(x, maxX));
-        const clampedY = Math.max(0, Math.min(y, maxY));
-        
-        cursor.style.left = clampedX + 'px';
-        cursor.style.top = clampedY + 'px';
-        cursor.style.display = 'block';
-        cursor.style.opacity = '1';
-        cursor.style.visibility = 'visible';
-        
-        // Create trail effect
-        createCursorTrail(e.clientX, e.clientY);
+    function getPanels() {
+        return document.querySelectorAll(".panel[data-panel]");
     }
-}
 
-function createCursorTrail(x, y) {
-    if (!isCursorVisible) return;
-    
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.left = (x - 3) + 'px';
-    trail.style.top = (y - 3) + 'px';
-    
-    document.body.appendChild(trail);
-    cursorTrails.push(trail);
-    
-    // Remove trail after animation
-    setTimeout(() => {
-        if (trail.parentNode) {
-            trail.parentNode.removeChild(trail);
+    function setTab(id) {
+        const panels = getPanels();
+
+        panels.forEach((p) => {
+            const match = p.dataset.panel === id;
+            p.classList.toggle("is-active", match);
+            p.setAttribute("aria-hidden", match ? "false" : "true");
+        });
+
+        if (history.replaceState) {
+            history.replaceState(null, "", "#" + id);
         }
-        cursorTrails = cursorTrails.filter(t => t !== trail);
-    }, 1200);
-}
 
-// Cosmic Burst Effect
-function createCosmicParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'cosmic-particle';
-    
-    // Get button position
-    const button = document.getElementById('cosmic-burst');
-    const buttonRect = button.getBoundingClientRect();
-    const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-    const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-    
-    // Random position around the button
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 20 + Math.random() * 30;
-    const startX = buttonCenterX + Math.cos(angle) * distance;
-    const startY = buttonCenterY + Math.sin(angle) * distance;
-    
-    // Random end position (further away)
-    const endDistance = 100 + Math.random() * 150;
-    const endX = buttonCenterX + Math.cos(angle) * endDistance;
-    const endY = buttonCenterY + Math.sin(angle) * endDistance;
-    
-    particle.style.left = startX + 'px';
-    particle.style.top = startY + 'px';
-    particle.style.setProperty('--end-x', (endX - startX) + 'px');
-    particle.style.setProperty('--end-y', (endY - startY) + 'px');
-    
-    // Random color for variety
-    const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ff8000'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.background = randomColor;
-    
-    document.body.appendChild(particle);
-    
-    // Remove particle after animation
-    setTimeout(() => {
-        if (particle.parentNode) {
-            particle.parentNode.removeChild(particle);
+        document.querySelectorAll(".tab-nav [role='tab']").forEach((btn) => {
+            const match = btn.dataset.tab === id;
+            btn.classList.toggle("is-active", match);
+            btn.setAttribute("aria-selected", match ? "true" : "false");
+        });
+
+        if (id === "gallery") {
+            requestAnimationFrame(() => {
+                document.dispatchEvent(new CustomEvent("gallery-layout-reflow"));
+            });
         }
-    }, 2000);
-}
 
-function triggerCosmicBurst() {
-    // Create multiple particles
-    for (let i = 0; i < 12; i++) {
-        setTimeout(() => {
-            createCosmicParticle();
-        }, i * 50);
+        syncPanelFooterNav(id);
     }
-}
 
-// Smooth scrolling for navigation links
-function smoothScroll(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
+    function syncPanelFooterNav(activeId) {
+        document.querySelectorAll("[data-panel-footer-link]").forEach((el) => {
+            const match = el.getAttribute("data-panel-footer-link") === activeId;
+            el.classList.toggle("is-active", match);
+            if (match) {
+                el.setAttribute("aria-current", "page");
+            } else {
+                el.removeAttribute("aria-current");
+            }
         });
     }
-}
 
-// Active section highlighting
-function updateActiveSection() {
-    const scrollPosition = window.scrollY + 100;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Remove active class from all nav links
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Add active class to corresponding nav link
-            const activeLink = document.querySelector(`[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+    function onTabClick(e) {
+        e.preventDefault();
+        const id = this.dataset.tab;
+        if (!id) return;
+        setTab(id);
+        const panel = document.querySelector(`.panel[data-panel="${id}"]`);
+        if (panel) {
+            const region = document.querySelector(".panel-region");
+            if (region) region.scrollTop = 0;
+        }
+    }
+
+    async function copyTextToClipboard(text) {
+        try {
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+                await navigator.clipboard.writeText(text);
+                return true;
             }
+        } catch (_) {
+            /* fall through */
         }
-    });
-}
-
-// Navbar background on scroll
-function updateNavbar() {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-}
-
-// Scroll animations
-function handleScrollAnimations() {
-    const elements = document.querySelectorAll('.fade-in');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('visible');
-        }
-    });
-}
-
-// Update cosmic background based on scroll position
-function updateCosmicBackground() {
-    const scrollTop = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollProgress = scrollTop / (documentHeight - windowHeight);
-    
-    const cosmicBg = document.querySelector('.cosmic-bg');
-    if (cosmicBg) {
-        // Smooth transition from blue to orange throughout the entire scroll
-        const blueToOrange = scrollProgress; // 0 to 1
-        
-        // Ensure we get pure blue when at the top (scrollProgress = 0)
-        if (scrollProgress <= 0.15) {
-            // At the very top, force pure blue (first 15% of scroll)
-            cosmicBg.style.background = `linear-gradient(
-                180deg,
-                rgba(0, 20, 60, 0.9) 0%,
-                rgba(0, 40, 100, 0.7) 25%,
-                rgba(0, 60, 120, 0.5) 50%,
-                rgba(0, 100, 80, 0.4) 75%,
-                rgba(0, 120, 100, 0.5) 100%
-            )`;
-        } else {
-            // Start fading to orange after 15% scroll progress
-            const fadeProgress = (scrollProgress - 0.15) / 0.85; // 0 to 1 for the fade portion
-            cosmicBg.style.background = `linear-gradient(
-                180deg,
-                rgba(0, 20, 60, 0.9) 0%,
-                rgba(0, 40, 100, 0.7) 25%,
-                rgba(0, 60, 120, 0.5) 50%,
-                rgba(${Math.round(0 + 200 * fadeProgress)}, ${Math.round(100 + 50 * fadeProgress)}, ${Math.round(50 + 30 * fadeProgress)}, ${0.4 + 0.3 * fadeProgress}) 75%,
-                rgba(${Math.round(0 + 255 * fadeProgress)}, ${Math.round(120 + 50 * fadeProgress)}, ${Math.round(60 + 40 * fadeProgress)}, ${0.5 + 0.3 * fadeProgress}) 100%
-            )`;
+        try {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            ta.style.top = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            ta.setSelectionRange(0, text.length);
+            const ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            return ok;
+        } catch (_) {
+            return false;
         }
     }
-}
 
-// Parallax effect for background elements
-function handleParallax() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.parallax');
-    
-    parallaxElements.forEach(element => {
-        const speed = element.dataset.speed || 0.5;
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-    });
-}
+    function initContactCopy() {
+        const timers = new WeakMap();
 
-// Mobile menu toggle (for smaller screens)
-function initMobileMenu() {
-    const mobileMenuButton = document.createElement('button');
-    mobileMenuButton.className = 'mobile-menu-toggle';
-    mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
-    mobileMenuButton.style.display = 'none';
-    
-    const navContainer = document.querySelector('.nav-container');
-    navContainer.appendChild(mobileMenuButton);
-    
-    // Show mobile menu button on small screens
-    function checkMobile() {
-        if (window.innerWidth <= 768) {
-            mobileMenuButton.style.display = 'block';
-            navLinks.forEach(link => link.style.display = 'none');
-        } else {
-            mobileMenuButton.style.display = 'none';
-            navLinks.forEach(link => link.style.display = 'flex');
-        }
-    }
-    
-    // Toggle mobile menu
-    mobileMenuButton.addEventListener('click', () => {
-        navLinks.forEach(link => {
-            link.style.display = link.style.display === 'none' ? 'flex' : 'none';
+        document.querySelectorAll(".contact-copy-btn[data-copy-email]").forEach((btn) => {
+            btn.addEventListener("click", async () => {
+                const email = btn.getAttribute("data-copy-email");
+                if (!email) return;
+
+                const row = btn.closest(".contact-email-row__tail");
+                const status = row ? row.querySelector(".contact-copy-status") : null;
+                const prev = timers.get(btn);
+                if (prev) clearTimeout(prev);
+
+                const ok = await copyTextToClipboard(email);
+                if (!ok || !status) return;
+
+                status.textContent = "Copied";
+                status.classList.add("is-visible");
+
+                const t = window.setTimeout(() => {
+                    status.classList.remove("is-visible");
+                    status.textContent = "";
+                    timers.delete(btn);
+                }, 1600);
+                timers.set(btn, t);
+            });
         });
-    });
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-}
-
-// Add fade-in class to elements for scroll animations
-function addFadeInClass() {
-    const elementsToAnimate = document.querySelectorAll('.timeline-content, .skill-category, .project-card, .info-item');
-    elementsToAnimate.forEach(element => {
-        element.classList.add('fade-in');
-    });
-}
-
-// Performance optimization: Throttle scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
     }
-}
 
-// Initialize all functionality
-function init() {
-    // Add fade-in classes
-    addFadeInClass();
-    
-    // Initialize mobile menu
-    initMobileMenu();
-    
-    // Event listeners
-    cosmicBurst.addEventListener('click', triggerCosmicBurst);
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', smoothScroll);
-    });
-    
-    // Custom cursor events - use throttled mousemove for better performance
-    document.addEventListener('mousemove', throttle(updateCursor, 16)); // 60fps
-    document.addEventListener('mouseenter', () => {
-        isCursorVisible = true;
-        const cursor = document.getElementById('custom-cursor');
-        if (cursor) {
-            cursor.style.display = 'block';
-            cursor.style.opacity = '1';
-            cursor.style.visibility = 'visible';
-        }
-    });
-    document.addEventListener('mouseleave', () => {
-        isCursorVisible = false;
-        const cursor = document.getElementById('custom-cursor');
-        if (cursor) {
-            cursor.style.display = 'none';
-        }
-    });
-    
-    // Ensure cursor is visible and properly positioned
-    window.addEventListener('scroll', () => {
-        if (isCursorVisible) {
-            const cursor = document.getElementById('custom-cursor');
-            if (cursor) {
-                cursor.style.opacity = '1';
-                cursor.style.visibility = 'visible';
-                cursor.style.display = 'block';
-            }
-        }
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        if (isCursorVisible) {
-            const cursor = document.getElementById('custom-cursor');
-            if (cursor) {
-                cursor.style.display = 'block';
-                cursor.style.opacity = '1';
-                cursor.style.visibility = 'visible';
-            }
-        }
-    });
-    
-    // Throttled scroll events for performance
-    window.addEventListener('scroll', throttle(() => {
-        updateActiveSection();
-        updateNavbar();
-        handleScrollAnimations();
-        handleParallax();
-        updateCosmicBackground();
-    }, 16));
-    
-    // Initial calls
-    updateActiveSection();
-    updateNavbar();
-    handleScrollAnimations();
-    updateCosmicBackground(); // Ensure correct initial background
-}
-
-// Create twinkling stars
-function createTwinklingStars() {
-    const numberOfStars = 40; // Number of twinkling stars to create
-    
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'twinkling-star';
-        
-        // Random size between 2px and 5px (thicker stars)
-        const size = 2 + Math.random() * 3;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        
-        // Random position across the viewport
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        
-        // Random animation delay for variety (0 to 3 seconds)
-        star.style.animationDelay = Math.random() * 3 + 's';
-        
-        // Random animation duration for more natural effect (2 to 4 seconds)
-        const duration = 2 + Math.random() * 2;
-        star.style.animationDuration = duration + 's';
-        
-        document.body.appendChild(star);
-    }
-}
-
-// Add some interactive elements
-function addInteractiveElements() {
-    // Add hover effects to project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
+    function projectItemHighlight() {
+        document.querySelectorAll(".project-item").forEach((item) => {
+            item.addEventListener("mousemove", (e) => {
+                const r = item.getBoundingClientRect();
+                const mx = ((e.clientX - r.left) / r.width) * 100;
+                const my = ((e.clientY - r.top) / r.height) * 100;
+                item.style.setProperty("--mx", `${mx}%`);
+                item.style.setProperty("--my", `${my}%`);
+            });
         });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Add click effects to skill tags
-    const skillTags = document.querySelectorAll('.skill-tag');
-    skillTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
-        });
-    });
-    
-    // Add smooth reveal animation to timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-50px)';
-        item.style.transition = 'all 0.6s ease';
-        
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-        }, index * 200);
-    });
-}
-
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    init();
-    
-    // Create twinkling stars
-    createTwinklingStars();
-    
-    // Add interactive elements
-    addInteractiveElements();
-    
-    // Add some additional animations
-    setTimeout(() => {
-        const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            heroContent.style.opacity = '0';
-            heroContent.style.transform = 'translateY(30px)';
-            heroContent.style.transition = 'all 1s ease';
-            
-            setTimeout(() => {
-                heroContent.style.opacity = '1';
-                heroContent.style.transform = 'translateY(0)';
-            }, 100);
-        }
-    }, 100);
-
-    // Shooting stars functionality
-    function createShootingStar() {
-        const star = document.createElement('div');
-        star.className = 'shooting-star';
-        
-        // Start above the screen and end below it for seamless effect
-        const startX = Math.random() * window.innerWidth;
-        const startY = -100; // Start above the screen
-        
-        star.style.left = startX + 'px';
-        star.style.top = startY + 'px';
-        
-        document.body.appendChild(star);
-        
-        // Remove star after animation completes
-        setTimeout(() => {
-            if (star.parentNode) {
-                star.parentNode.removeChild(star);
-            }
-        }, 3000); // Match the CSS animation duration
     }
 
-    // Create shooting stars occasionally
-    function startShootingStars() {
-        // Create a shooting star every 8-15 seconds
-        setInterval(() => {
-            if (Math.random() > 0.8) { // 20% chance
-                createShootingStar();
-            }
-        }, 8000 + Math.random() * 7000);
+    function initHash() {
+        const raw = (window.location.hash || "").replace("#", "");
+        const h = raw === "work" ? "featured" : raw;
+        if (raw === "work" && history.replaceState) {
+            history.replaceState(null, "", "#featured");
+        }
+        const valid = ["featured", "gallery", "projects", "experience", "education", "research", "contact"];
+        if (valid.includes(h)) setTab(h);
+        else setTab(DEFAULT_TAB);
     }
 
-    // Start shooting stars after page loads
-    setTimeout(startShootingStars, 3000);
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".tab-nav [data-tab], .tab-trigger[data-tab]").forEach((el) => {
+            el.addEventListener("click", onTabClick);
+        });
 
-    // Add some CSS animations
-    const additionalCSS = `
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInFromRight {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInUp {
-            0% {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            animation: slideInFromLeft 0.8s ease-out;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            animation: slideInFromRight 0.8s ease-out;
-        }
-        
-        .skill-category, .project-card {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .skill-category:nth-child(odd) {
-            animation-delay: 0.1s;
-        }
-        
-        .skill-category:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-        
-        .project-card:nth-child(odd) {
-            animation-delay: 0.1s;
-        }
-        
-        .project-card:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-    `;
-
-    // Add the additional CSS
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = additionalCSS;
-    document.head.appendChild(styleSheet);
-
-}); // Close DOMContentLoaded event listener
+        projectItemHighlight();
+        initContactCopy();
+        initHash();
+        window.addEventListener("hashchange", initHash);
+    });
+})();

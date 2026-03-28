@@ -3,406 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tayyab Ahmed - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Tayyab Ahmed: Portfolio · ML &amp; research systems</title>
+    <link rel="stylesheet" href="perplexity-theme.css">
+    <link rel="stylesheet" href="perplexity-animations.css">
+    <link rel="stylesheet" href="rising-particles.css">
+    <link rel="stylesheet" href="editorial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cosmic Background -->
-    <div class="cosmic-bg"></div>
-    
-    <!-- Cosmic Background Elements -->
-    <div class="cosmic-element"></div>
-    <div class="cosmic-element"></div>
-    <div class="cosmic-element"></div>
-    <div class="cosmic-element"></div>
-    <div class="cosmic-element"></div>
-    
-    <!-- Custom Star Cursor -->
-    <div class="custom-cursor" id="custom-cursor">
-        <div class="cursor-star"></div>
+    <div id="static-stars-root" aria-hidden="true"></div>
+    <div id="rising-particles-root" aria-hidden="true">
+        <div class="animation-wrapper">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+        </div>
     </div>
-    
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <div class="nav-avatar">
-                    <i class="fas fa-user"></i>
+    <div id="app-root" class="app">
+        <aside class="app__sidebar" aria-label="Profile">
+            <div class="profile-panel">
+                <div class="intro intro--compact">
+                    <header class="sidebar-section sidebar-section--hero">
+                        <h1 class="intro__name">Tayyab Ahmed</h1>
+                        <p class="intro__tagline">
+                            Research-oriented engineer focused on building and evaluating machine learning systems for real-world, multimodal, and data-constrained problems.
+                        </p>
+                    </header>
+
+                    <section class="sidebar-section sidebar-section--info" aria-label="Education and location">
+                        <p class="sidebar-section__label">Info</p>
+                        <div class="intro__meta-stacked">
+                            <span>University of Guelph</span>
+                            <span>Toronto, Ontario</span>
+                        </div>
+                    </section>
+
+                    <section class="sidebar-section sidebar-section--interests" aria-label="Interests">
+                        <p class="sidebar-section__label">Interests</p>
+                        <p class="intro__accent-line">applied ml · research · systems</p>
+                    </section>
+
+                    <section class="sidebar-section sidebar-section--tech" aria-label="Technical focus">
+                        <p class="sidebar-section__label">Tech focus</p>
+                        <p class="intro__accent-line intro__accent-line--muted">
+                            pytorch · cv · nlp · pipelines · evaluation · agentic workflows
+                        </p>
+                    </section>
+
+                    <section class="sidebar-section sidebar-section--research-interests" aria-label="Research interests">
+                        <p class="sidebar-section__label">Research interests</p>
+                        <p class="intro__accent-line intro__accent-line--muted">
+                            Learning under data limits · multimodal modeling · robust real-world pipelines · evaluation, generalization &amp; debugging
+                        </p>
+                    </section>
+
+                    <section class="sidebar-section sidebar-section--signals" aria-label="Technical signals">
+                        <p class="sidebar-section__label">Technical signals</p>
+                        <ul class="research-signals" role="list">
+                            <li>Small-scale &amp; noisy datasets</li>
+                            <li>Grouped / patient-level validation</li>
+                            <li>Multimodal inputs</li>
+                            <li>Cross-validation &amp; error analysis</li>
+                            <li>Deployment-aware metrics</li>
+                        </ul>
+                    </section>
+
+                    <section class="sidebar-section sidebar-section--links" aria-label="Links">
+                        <p class="sidebar-section__label">Links</p>
+                        <nav class="intro__links intro__links--links-row" aria-label="Primary links">
+                            <a href="#" data-tab="featured" class="tab-trigger intro__link">Featured</a>
+                            <span class="intro__links-sep" aria-hidden="true">·</span>
+                            <a href="#" data-tab="research" class="tab-trigger intro__link">Research</a>
+                            <span class="intro__links-sep" aria-hidden="true">·</span>
+                            <a href="#" data-tab="projects" class="tab-trigger intro__link">Projects</a>
+                            <span class="intro__links-sep" aria-hidden="true">·</span>
+                            <a href="#" data-tab="experience" class="tab-trigger intro__link">Experience</a>
+                            <span class="intro__links-break" aria-hidden="true"></span>
+                            <a href="https://github.com/TayyabAhmed561" target="_blank" rel="noopener noreferrer" class="intro__link">GitHub</a>
+                            <span class="intro__links-sep" aria-hidden="true">·</span>
+                            <a href="https://linkedin.com/in/tayyabmahmed/" target="_blank" rel="noopener noreferrer" class="intro__link">LinkedIn</a>
+                            <span class="intro__links-sep" aria-hidden="true">·</span>
+                            <a href="#" data-tab="contact" class="tab-trigger intro__link">Contact</a>
+                        </nav>
+                    </section>
                 </div>
             </div>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link"><i class="fas fa-home"></i></a>
-                <a href="#about" class="nav-link"><i class="fas fa-user"></i></a>
-                <a href="#photography" class="nav-link"><i class="fas fa-camera"></i></a>
-                <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i></a>
-                <a href="#skills" class="nav-link"><i class="fas fa-cogs"></i></a>
-                <a href="#projects" class="nav-link"><i class="fas fa-folder"></i></a>
-                <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i></a>
-                <button class="cosmic-burst" id="cosmic-burst">
-                    <i class="fas fa-star"></i>
+
+            <section class="sidebar-section snapshots-sidebar" aria-label="Snapshots preview">
+                <p class="snapshots-preview__label">Snapshots</p>
+                <div class="snapshots-grid" data-snapshots-preview></div>
+                <button type="button" class="snapshots-preview__cta tab-trigger" data-tab="gallery">
+                    Full gallery →
                 </button>
-            </div>
-        </div>
-    </nav>
+            </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="profile-image">
-                        <div class="avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    </div>
-                    <h1 class="hero-title">Hi, I'm <span class="highlight">Tayyab Ahmed</span> ⭐</h1>
-                    <p class="hero-subtitle">Computer Engineering Student & Aspiring Machine Learning Engineer</p>
-                    <p class="hero-description">
-                        I'm a passionate Computer Engineering student at the University of Guelph 🇨🇦, currently working as a Machine Learning Engineer at Verismo AI. I love building innovative solutions that combine cutting-edge technology with real-world impact. From AI-powered applications to cloud infrastructure, I'm excited to make a difference in this fast-paced tech world! 🚀
+            <nav class="tab-nav sidebar-section sidebar-section--nav" role="tablist" aria-label="Sections">
+                <button type="button" role="tab" id="tab-featured" data-tab="featured" aria-controls="panel-featured" aria-selected="true">Featured</button>
+                <button type="button" role="tab" id="tab-research" data-tab="research" aria-controls="panel-research" aria-selected="false">Research</button>
+                <button type="button" role="tab" id="tab-projects" data-tab="projects" aria-controls="panel-projects" aria-selected="false">Projects</button>
+                <button type="button" role="tab" id="tab-experience" data-tab="experience" aria-controls="panel-experience" aria-selected="false">Experience</button>
+                <button type="button" role="tab" id="tab-education" data-tab="education" aria-controls="panel-education" aria-selected="false">Education</button>
+                <button type="button" role="tab" id="tab-gallery" data-tab="gallery" aria-controls="panel-gallery" aria-selected="false">Gallery</button>
+                <button type="button" role="tab" id="tab-contact" data-tab="contact" aria-controls="panel-contact" aria-selected="false">Contact</button>
+            </nav>
+        </aside>
+
+        <div class="app__panel-column">
+            <div class="visual-panel">
+                <div class="visual-panel__bloom" aria-hidden="true"></div>
+                <div class="visual-panel__ambient" aria-hidden="true"></div>
+                <div class="visual-panel__geometry" aria-hidden="true"></div>
+                <div class="visual-panel__grain" aria-hidden="true"></div>
+            <div class="panel-region" id="panel-region">
+                <div id="panel-featured" class="panel is-active" data-panel="featured" role="tabpanel" aria-labelledby="tab-featured" aria-hidden="false">
+                    <p class="panel__label">Selected Work &amp; Research</p>
+                    <p class="featured__lede">
+                        A curated overview of applied machine learning systems, real-world experience, and technical deep dives.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>
-                            I'm currently pursuing my Bachelor of Engineering in Computer Engineering (Co-op) at the University of Guelph, where I'm passionate about combining theoretical knowledge with practical applications. My journey in tech started early, and I've been fortunate to work on diverse projects ranging from machine learning applications to cloud infrastructure.
+                    <section class="featured-highlight" aria-labelledby="featured-role-title">
+                        <h2 id="featured-role-title" class="featured-highlight__title">Machine Learning Engineer, Stealth AI Startup</h2>
+                        <p class="featured-highlight__subtitle">Biomedical ML · Noisy data · Robust evaluation · Real-world systems</p>
+                        <p class="featured-highlight__desc">
+                            End-to-end ML for biomedical imaging under noisy, real-world conditions: preprocessing, validation, error analysis, and tradeoffs when data and deployment constraints are tight.
                         </p>
-                        <p>
-                            As a Machine Learning Engineer at Verismo AI, I'm working on cutting-edge deep learning pipelines, fine-tuning models for clinical applications. I'm also proud to serve as a Technical Mentor at STEMOTICS, where I help inspire the next generation of tech enthusiasts.
+                        <div class="featured-highlight__actions">
+                            <a href="#" data-tab="experience" class="tab-trigger featured-highlight__action">View Experience</a>
+                            <a href="work/stealth-role.html" class="featured-highlight__action featured-highlight__action--secondary">View Deep Dive</a>
+                        </div>
+                    </section>
+
+                    <div class="projects-deep-dives projects-deep-dives--featured" aria-label="Selected deep dives">
+                        <p class="projects-deep-dives__label">Selected deep dives</p>
+                        <p class="projects-deep-dives__lede">
+                            How systems were built, debugged, and evaluated in practice: concise technical case studies.
                         </p>
-                        <div class="quick-info">
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Guelph, ON, Canada</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>University of Guelph</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Machine Learning Engineer</span>
-                            </div>
-                        </div>
+                        <ul class="projects-deep-dives__list" role="list">
+                            <li>
+                                <a href="work/mindsync.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">MindSync</span>
+                                    <span class="projects-deep-dives__link-meta">EEG · limited labels · iteration &amp; evaluation</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="work/safesteps.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">SafeSteps</span>
+                                    <span class="projects-deep-dives__link-meta">NLP in the wild · imbalance · schema fixes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="work/job-agent.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">DraftPilot</span>
+                                    <span class="projects-deep-dives__link-meta">Multi-stage pipeline · scoring · human-in-the-loop</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Photography Gallery Section -->
-        <section id="photography" class="section">
-            <div class="container">
-                <h2 class="section-title">Gallery</h2>
-                <div class="gallery-layout">
-                    <!-- Left Column -->
-                    <div class="gallery-column">
-                        <div class="gallery-item small">
-                            <img src="media/RedPanda.JPG" alt="Red Panda" class="gallery-image">
-                        </div>
-                        <div class="gallery-item small">
-                            <img src="media/MeTakingPicture.JPG" alt="Me Taking Picture" class="gallery-image">
-                        </div>
-                    </div>
-                    
-                    <!-- Middle Column - Banff Waterfall Video -->
-                    <div class="gallery-column">
-                        <div class="gallery-item large">
-                            <video src="media/banffWaterfallVid.MOV" alt="Banff Waterfall" class="gallery-video" autoplay muted loop playsinline>
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Column -->
-                    <div class="gallery-column">
-                        <div class="gallery-item small">
-                            <img src="media/TwoGuysMex.jpg" alt="Two Guys in Mexico" class="gallery-image">
-                        </div>
-                        <div class="gallery-item small">
-                            <img src="media/poolMex.jpg" alt="Pool in Mexico" class="gallery-image">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bottom Row - Three Cells in a Row -->
-                <div class="gallery-bottom-row">
-                    <div class="gallery-text-box">
-                        <p>"Building a product that people will recommend to their friends."</p>
-                    </div>
-                    <div class="gallery-item small">
-                        <img src="media/wellMex.jpg" alt="Well in Mexico" class="gallery-image">
-                    </div>
-                    <div class="gallery-item small">
-                        <img src="media/HouseCornerMex.jpg" alt="House Corner in Mexico" class="gallery-image">
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <section class="featured-walkthroughs" aria-label="Project walkthroughs">
+                        <p class="featured-section__label">Project walkthroughs</p>
+                        <p class="featured-section__lede">Short walkthroughs of systems built and evaluated in practice.</p>
+                        <ul class="walkthrough-list" role="list">
+                            <li class="walkthrough-card">
+                                <h3 class="walkthrough-card__title">MindSync | EEG-Based ML Pipeline</h3>
+                                <p class="walkthrough-card__desc">End-to-end pipeline for affect estimation from noisy EEG signals, focusing on preprocessing, session-aware validation, and evaluation under limited labels.</p>
+                                <div class="walkthrough-card__embed">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/50zqtQTgmh8"
+                                        title="MindSync project walkthrough"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen
+                                        loading="lazy"
+                                    ></iframe>
+                                </div>
+                                <div class="walkthrough-card__links">
+                                    <a href="work/mindsync.html" class="walkthrough-card__link">Deep dive</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://github.com/TayyabAhmed561/MindSync" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">GitHub</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://devpost.com/software/mindsync-qny03a" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">Demo</a>
+                                </div>
+                            </li>
+                            <li class="walkthrough-card">
+                                <h3 class="walkthrough-card__title">ESV | Geospatial ML Visualization</h3>
+                                <p class="walkthrough-card__desc">Interactive platform for exploring endangered species data using spatial analysis and real-time filtering, designed to handle noisy and heterogeneous datasets.</p>
+                                <div class="walkthrough-card__embed">
+                                    <!-- Same video as https://youtu.be/66xZr1S3RvE, bump &cb= if the embed thumbnail looks stale after a YouTube thumbnail change -->
+                                    <iframe
+                                        src="https://www.youtube.com/embed/66xZr1S3RvE?rel=0&amp;modestbranding=1&amp;cb=2"
+                                        title="ESV project walkthrough"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen
+                                        loading="lazy"
+                                    ></iframe>
+                                </div>
+                                <div class="walkthrough-card__links">
+                                    <a href="#" data-tab="projects" class="tab-trigger walkthrough-card__link">Full project</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://devpost.com/software/esv-endangered-species-visualizer" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">Devpost</a>
+                                </div>
+                            </li>
+                            <li class="walkthrough-card">
+                                <h3 class="walkthrough-card__title">SafeSteps | NLP + Agent Workflow System</h3>
+                                <p class="walkthrough-card__desc">Multi-step workflow system for hazard reporting and routing using NLP classification and structured orchestration, highlighting real-world input variability and system constraints.</p>
+                                <div class="walkthrough-card__embed">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/_tuEe1CAqak"
+                                        title="SafeSteps project walkthrough"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen
+                                        loading="lazy"
+                                    ></iframe>
+                                </div>
+                                <div class="walkthrough-card__links">
+                                    <a href="work/safesteps.html" class="walkthrough-card__link">Deep dive</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://github.com/TayyabAhmed561/SafeSteps" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">GitHub</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://devpost.com/software/safesteps-x93v1t" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">Devpost</a>
+                                    <span class="walkthrough-card__sep" aria-hidden="true">·</span>
+                                    <a href="https://dorahacks.io/buidl/23036" target="_blank" rel="noopener noreferrer" class="walkthrough-card__link">BUIDL</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section">
-            <div class="container">
-                <h2 class="section-title">Work Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-header">
+                    <section class="featured-previews" aria-label="Selected project previews">
+                        <p class="featured-section__label">Selected projects</p>
+                        <p class="featured-section__lede">Highlights from the full list: pipelines, constraints, and evaluation-first work.</p>
+                        <ul class="featured-previews__list" role="list">
+                            <li class="featured-preview">
+                                <h3 class="featured-preview__title">MindSync</h3>
+                                <p class="featured-preview__desc">EEG → model path with session-aware splits and error review before “real-time” claims.</p>
+                                <a href="#" data-tab="projects" class="tab-trigger featured-preview__link">Open in Projects</a>
+                            </li>
+                            <li class="featured-preview">
+                                <h3 class="featured-preview__title">DraftPilot</h3>
+                                <p class="featured-preview__desc">Review-first agent for tailored résumés and cover letters: local, inspectable, human-in-the-loop.</p>
+                                <a href="#" data-tab="projects" class="tab-trigger featured-preview__link">Open in Projects</a>
+                            </li>
+                            <li class="featured-preview">
+                                <h3 class="featured-preview__title">SafeSteps</h3>
+                                <p class="featured-preview__desc">Operational NLP under imbalance: errors drive schema and label fixes.</p>
+                                <a href="#" data-tab="projects" class="tab-trigger featured-preview__link">Open in Projects</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="featured-media" aria-label="Media and external links">
+                        <p class="featured-section__label">Media &amp; links</p>
+                        <nav class="featured-media__nav" aria-label="Proof and demos">
+                            <a href="https://github.com/TayyabAhmed561" target="_blank" rel="noopener noreferrer" class="featured-media__link">GitHub</a>
+                            <a href="https://github.com/TayyabAhmed561/DraftPilot" target="_blank" rel="noopener noreferrer" class="featured-media__link">DraftPilot</a>
+                            <a href="https://devpost.com/software/mindsync-qny03a" target="_blank" rel="noopener noreferrer" class="featured-media__link">MindSync demo</a>
+                            <a href="https://devpost.com/software/safesteps-x93v1t" target="_blank" rel="noopener noreferrer" class="featured-media__link">SafeSteps (Devpost)</a>
+                            <a href="https://dorahacks.io/buidl/23036" target="_blank" rel="noopener noreferrer" class="featured-media__link">SafeSteps (BUIDL)</a>
+                        </nav>
+                    </section>
+                </div>
+
+                <div id="panel-gallery" class="panel" data-panel="gallery" role="tabpanel" aria-labelledby="tab-gallery" aria-hidden="true">
+                    <div class="gallery-panel-layout">
+                        <p class="panel__label">Gallery</p>
+                        <div class="gallery-masonry-wrap">
+                            <div class="gallery-masonry" data-gallery-masonry role="list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel-projects" class="panel" data-panel="projects" role="tabpanel" aria-labelledby="tab-projects" aria-hidden="true">
+                    <p class="panel__label">Projects</p>
+                    <div class="projects-deep-dives" aria-label="Selected deep dives">
+                        <p class="projects-deep-dives__label">Selected deep dives</p>
+                        <p class="projects-deep-dives__lede">
+                            Extended notes on problem framing, what broke in practice, and how work was evaluated, meant for supervisors and technical readers who want evidence, not taglines.
+                        </p>
+                        <ul class="projects-deep-dives__list" role="list">
+                            <li>
+                                <a href="work/mindsync.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">MindSync</span>
+                                    <span class="projects-deep-dives__link-meta">EEG · limited labels · iteration &amp; evaluation</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="work/safesteps.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">SafeSteps</span>
+                                    <span class="projects-deep-dives__link-meta">NLP in the wild · imbalance · schema fixes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="work/job-agent.html" class="projects-deep-dives__link">
+                                    <span class="projects-deep-dives__link-title">DraftPilot</span>
+                                    <span class="projects-deep-dives__link-meta">Multi-stage pipeline · scoring · human-in-the-loop</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="project-list">
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">MindSync</h3>
+                                <span class="project-item__tag">Biomedical ML / Time Series</span>
+                            </div>
+                            <p class="project-item__desc">End-to-end pipeline from raw EEG through conditioning to deep models for affect estimation, centering artifact-heavy biosignals, thin labels, and whether splits leak session structure before claiming “real-time” performance.</p>
+                            <p class="project-item__signals">Noisy biosignals · session-aware validation · ablations &amp; error stratification</p>
+                            <p class="project-item__tech">Python · PyTorch · DSP / EEG</p>
+                            <div class="project-item__links">
+                                <a href="work/mindsync.html" class="project-item__link-deep">Deep dive</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://github.com/TayyabAhmed561/MindSync" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://devpost.com/software/mindsync-qny03a" target="_blank" rel="noopener noreferrer">Demo</a>
+                            </div>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">DraftPilot</h3>
+                                <span class="project-item__tag">LLMs / Agentic Systems</span>
+                            </div>
+                            <p class="project-item__desc">Local, agent-based system that ingests job postings, scores role-profile fit with explicit heuristics, and generates constrained résumé and cover letter drafts, built for inspection and human-in-the-loop control, not auto-submit.</p>
+                            <p class="project-item__signals">Interpretable scoring · template + LaTeX synthesis · full-stack (React + FastAPI)</p>
+                            <p class="project-item__tech">React · TypeScript · FastAPI · Python · LaTeX</p>
+                            <div class="project-item__links">
+                                <a href="work/job-agent.html" class="project-item__link-deep">Deep dive</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://github.com/TayyabAhmed561/DraftPilot" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">SafeSteps</h3>
+                                <span class="project-item__tag">Applied NLP / Safety</span>
+                            </div>
+                            <p class="project-item__desc">Hazard reporting flows with messy user text in the wild; classification and routing under class imbalance, with emphasis on failure slices, label noise, and tightening the schema when the model confidently misfires.</p>
+                            <p class="project-item__signals">Imbalanced classes · error-driven labeling · operational NLP</p>
+                            <p class="project-item__tech">Python · MongoDB · NLP</p>
+                            <div class="project-item__links">
+                                <a href="work/safesteps.html" class="project-item__link-deep">Deep dive</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://github.com/TayyabAhmed561/SafeSteps" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://devpost.com/software/safesteps-x93v1t" target="_blank" rel="noopener noreferrer">Devpost</a>
+                                <span class="project-item__link-sep" aria-hidden="true">·</span>
+                                <a href="https://dorahacks.io/buidl/23036" target="_blank" rel="noopener noreferrer">BUIDL</a>
+                            </div>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">ESV (Endangered Species Visualized)</h3>
+                                <span class="project-item__tag">Geospatial / Data Viz</span>
+                            </div>
+                            <p class="project-item__desc">Exploratory stack for species occurrence data: filtering suspect records, map-backed sanity checks, and aggregates transparent enough that domain experts can see what a heatmap is (and isn’t) evidence for.</p>
+                            <p class="project-item__tech">React · Mapbox · JavaScript</p>
+                            <div class="project-item__links">
+                                <a href="https://devpost.com/software/esv-endangered-species-visualizer" target="_blank" rel="noopener noreferrer">Devpost</a>
+                            </div>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">University Management System</h3>
+                                <span class="project-item__tag">Backend / Systems</span>
+                            </div>
+                            <p class="project-item__desc">Multi-tenant Java services with RBAC and analytics paths that had to stay correct under concurrent use: systems engineering that sits alongside ML work when reliability and data integrity are non-negotiable.</p>
+                            <p class="project-item__tech">Java · AWS · MySQL</p>
+                            <div class="project-item__links">
+                                <a href="https://github.com/TayyabAhmed561/UniversityManagementSystem" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+                        <article class="project-item">
+                            <div class="project-item__head">
+                                <h3 class="project-item__title">Multi-Axis Gimbal</h3>
+                                <span class="project-item__tag">Embedded / Control</span>
+                            </div>
+                            <p class="project-item__desc">Closed-loop stabilization from noisy IMU streams: calibration drift, filter tuning, and closing the gap between bench models and hardware that actually shakes in your hands.</p>
+                            <p class="project-item__tech">Arduino · C++ · Embedded Systems</p>
+                            <div class="project-item__links">
+                                <a href="https://github.com/TayyabAhmed561/3-Axis-Gimbal" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div id="panel-experience" class="panel" data-panel="experience" role="tabpanel" aria-labelledby="tab-experience" aria-hidden="true">
+                    <p class="panel__label">Experience</p>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-item__head">
                                 <h3>Machine Learning Engineer</h3>
-                                <span class="company">Verismo AI</span>
-                                <span class="duration">May 2025 - Present</span>
+                                <span class="experience-item__tag">Biomedical ML · Noisy data · Robust evaluation · Real-world systems</span>
                             </div>
+                            <p class="org">Stealth AI Startup</p>
+                            <p class="dates">2025 to Present</p>
                             <ul>
-                                <li>Used PyTorch, torchvision, and pandas to fine-tune a ResNet18 model for multi-output regression on microscopy images in a clinical deep learning pipeline</li>
-                                <li>Improved bin-level prediction accuracy by 33% by implementing quantile-based dynamic binning and stratified K-Fold cross-validation</li>
-                                <li>Developed a custom evaluation framework leveraging per-fold bin-aware confusion matrices, enabling robust model diagnostics across 14 blood parameters</li>
+                                <li>Built and iterated on computer vision pipelines for noisy, real-world biomedical image data</li>
+                                <li>Designed preprocessing, training, and evaluation workflows with careful validation and error analysis</li>
+                                <li>Focused on robustness, generalization, and performance under small-data and deployment-constrained settings</li>
+                            </ul>
+                            <div class="experience-item__links">
+                                <a href="work/stealth-role.html" class="experience-item__link">View Deep Dive</a>
+                            </div>
+                        </div>
+                        <div class="experience-item">
+                            <div class="experience-item__head">
+                                <h3>Embedded Systems Developer</h3>
+                                <span class="experience-item__tag">Embedded / Real-Time</span>
+                            </div>
+                            <p class="org">Gryphon Racing (Formula SAE EV)</p>
+                            <p class="dates">2026 to Present</p>
+                            <ul>
+                                <li>Developing embedded software for EV subsystems using microcontrollers and real-time sensor data</li>
+                                <li>Implementing low-latency processing and safety-critical control logic</li>
+                                <li>Collaborating across electrical and mechanical teams for system integration</li>
                             </ul>
                         </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Technical Mentor</h3>
-                                <span class="company">STEMOTICS</span>
-                                <span class="duration">July 2022 - Present</span>
-                            </div>
+                        <div class="experience-item">
+                            <h3>Events Organizer &amp; Technical Contributor</h3>
+                            <p class="org">Google Developer Student Club (GDSC)</p>
+                            <p class="dates">2024 to Present</p>
                             <ul>
-                                <li>Led 20+ workshops on cloud computing, IoT, and distributed systems, driving a 95% student engagement rate</li>
-                                <li>Mentored students (8-16 years old) on software engineering, RESTful APIs, and system design, influencing 100+ projects</li>
-                                <li>Represented STEMotics in international robotics competitions; secured 2nd place in the First LEGO League among 15+ teams</li>
+                                <li>Organized workshops and speaker events on ML, cloud systems, and applied AI (100+ students)</li>
+                                <li>Contributed to curriculum design for Python, APIs, and machine learning fundamentals</li>
                             </ul>
                         </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-header">
+                        <div class="experience-item">
+                            <div class="experience-item__head">
                                 <h3>Software Engineering Intern</h3>
-                                <span class="company">GEOTAB</span>
-                                <span class="duration">July 2021 - August 2021</span>
+                                <span class="experience-item__tag">Cloud / Data Systems</span>
                             </div>
+                            <p class="org">Geotab</p>
+                            <p class="dates">2021</p>
                             <ul>
-                                <li>Supported cloud-based vehicle monitoring system, processing 30+ TB of daily telematics data, resulting in real-time fleet analysis</li>
-                                <li>Used AWS tools and scalable cloud infrastructure to process millions of data points per hour for 2M+ connected vehicles</li>
-                                <li>Leveraged data analytics and AI to optimize fleet performance, reducing downtime and improving vehicle usage</li>
+                                <li>Analyzed large-scale cloud ingestion systems processing 30+ TB/day of telematics data</li>
+                                <li>Worked with C#, .NET, SQL, and cloud systems in production environments</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Technical Mentor</h3>
+                            <p class="org">FIRST Robotics / STEMOTICS</p>
+                            <p class="dates">2022 to 2025</p>
+                            <ul>
+                                <li>Led robotics workshops on embedded systems, debugging, and system design</li>
+                                <li>Mentored teams in navigation, performance optimization, and competition strategy</li>
+                                <li>Coached team to 2nd place out of 15 at FIRST LEGO League</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Clinical Operations Assistant</h3>
+                            <p class="org">IDA Pharmacy</p>
+                            <p class="dates">2020 to 2025</p>
+                            <ul>
+                                <li>Managed patient intake, scheduling, and clinic coordination</li>
+                                <li>Supported physicians with documentation and workflow optimization</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Intern</h3>
+                            <p class="org">Toastmasters International</p>
+                            <p class="dates">2019</p>
+                            <ul>
+                                <li>Led presentations and facilitated group discussions</li>
+                                <li>Improved communication and structured feedback skills</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">C</span>
-                            <span class="skill-tag">C++</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                        </div>
+                <div id="panel-education" class="panel" data-panel="education" role="tabpanel" aria-labelledby="tab-education" aria-hidden="true">
+                    <p class="panel__label">Education</p>
+                    <div class="education-block">
+                        <p><strong>University of Guelph</strong></p>
+                        <p>Bachelor of Engineering, Computer Engineering (Co-op)</p>
+                        <p>2024 to 2029</p>
                     </div>
+                </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Azure</span>
-                            <span class="skill-tag">Google Cloud</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">GitHub</span>
+                <div id="panel-research" class="panel" data-panel="research" role="tabpanel" aria-labelledby="tab-research" aria-hidden="true">
+                    <p class="panel__label">Research</p>
+                    <div class="research-workspace">
+                        <p class="research-workspace__lede">
+                            Ongoing notes, experiments, and questions around machine learning systems, evaluation, and real-world robustness.
+                        </p>
+
+                        <aside class="research-workspace__latest" aria-label="Latest research activity">
+                            <p class="research-workspace__latest-label">Latest activity</p>
+                            <div class="research-workspace__latest-inner" data-research-latest></div>
+                        </aside>
+
+                        <div class="research-subnav" role="tablist" aria-label="Research workspace categories">
+                            <button type="button" class="research-subnav__btn is-active" role="tab" id="research-tab-logs" data-research-subtab="logs" aria-controls="research-pane-logs" aria-selected="true">Logs</button>
+                            <button type="button" class="research-subnav__btn" role="tab" id="research-tab-insights" data-research-subtab="insights" aria-controls="research-pane-insights" aria-selected="false">Insights</button>
+                            <button type="button" class="research-subnav__btn" role="tab" id="research-tab-experiments" data-research-subtab="experiments" aria-controls="research-pane-experiments" aria-selected="false">Experiments</button>
+                            <button type="button" class="research-subnav__btn" role="tab" id="research-tab-paperAttempts" data-research-subtab="paperAttempts" aria-controls="research-pane-paperAttempts" aria-selected="false">Paper Attempts</button>
+                            <button type="button" class="research-subnav__btn" role="tab" id="research-tab-openQuestions" data-research-subtab="openQuestions" aria-controls="research-pane-openQuestions" aria-selected="false">Open Questions</button>
                         </div>
-                    </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">PyTorch</span>
-                            <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">NumPy</span>
-                            <span class="skill-tag">Matplotlib</span>
-                            <span class="skill-tag">Scikit-learn</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">GraphQL</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Developer Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">VS Code</span>
-                            <span class="skill-tag">PyCharm</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Postman</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AWS Solutions Architect Associate (In Progress)</span>
-                            <span class="skill-tag">House of Commons Toastmasters Leadership</span>
-                            <span class="skill-tag">DECA Provincials</span>
+                        <div class="research-panes">
+                            <div id="research-pane-logs" class="research-pane is-active" data-research-pane="logs" role="tabpanel" aria-labelledby="research-tab-logs" aria-hidden="false">
+                                <div class="research-feed" data-research-feed="logs"></div>
+                            </div>
+                            <div id="research-pane-insights" class="research-pane" data-research-pane="insights" role="tabpanel" aria-labelledby="research-tab-insights" aria-hidden="true">
+                                <div class="research-feed" data-research-feed="insights"></div>
+                            </div>
+                            <div id="research-pane-experiments" class="research-pane" data-research-pane="experiments" role="tabpanel" aria-labelledby="research-tab-experiments" aria-hidden="true">
+                                <div class="research-feed" data-research-feed="experiments"></div>
+                            </div>
+                            <div id="research-pane-paperAttempts" class="research-pane" data-research-pane="paperAttempts" role="tabpanel" aria-labelledby="research-tab-paperAttempts" aria-hidden="true">
+                                <div class="research-feed" data-research-feed="paperAttempts"></div>
+                            </div>
+                            <div id="research-pane-openQuestions" class="research-pane" data-research-pane="openQuestions" role="tabpanel" aria-labelledby="research-tab-openQuestions" aria-hidden="true">
+                                <div class="research-feed" data-research-feed="openQuestions"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-leaf"></i>
+                <div id="panel-contact" class="panel" data-panel="contact" role="tabpanel" aria-labelledby="tab-contact" aria-hidden="true">
+                    <p class="panel__label">Contact</p>
+                    <div class="contact-panel">
+                        <div class="contact-row contact-row--stack contact-row--social">
+                            <a href="https://linkedin.com/in/tayyabmahmed/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://github.com/TayyabAhmed561" target="_blank" rel="noopener noreferrer">GitHub</a>
                         </div>
-                        <h3>ESV (Endangered Species Visualized)</h3>
-                        <p>Interactive web application using React and Mapbox to visualize endangered species data by geographic location across Ontario. Features dynamic map points and heatmaps for biodiversity awareness.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Mapbox</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="#" class="project-link">More Details →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-walking"></i>
-                        </div>
-                        <h3>SafeSteps - Pedestrian Safety System</h3>
-                        <p>Machine learning-powered hazard navigation system for 10,000+ concurrent users. Features NLP-driven hazard reporting with 92%+ precision and AI recommendation engine for safer walking routes.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Machine Learning</span>
-                            <span>NLP</span>
-                        </div>
-                        <a href="#" class="project-link">More Details →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>MindSync - Brainwave-Controlled Interface</h3>
-                        <p>Full-stack EEG sensor system to interpret 500M+ neural signals for hands-free device control. Achieved 95%+ accuracy in emotional state classification through AI-driven therapy session tracking.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>EEG</span>
-                        </div>
-                        <a href="#" class="project-link">More Details →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <h3>Multi-Axis Self-Stabilizing Gimbal</h3>
-                        <p>3-axis self-stabilizing gimbal using Arduino, servo motors, and MPU6050 sensor. Reduces camera shake by over 80% during dynamic movement with real-time MEMS motion tracking.</p>
-                        <div class="project-tech">
-                            <span>Arduino</span>
-                            <span>C++</span>
-                            <span>Hardware</span>
-                        </div>
-                        <a href="#" class="project-link">More Details →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <h3>University Management System</h3>
-                        <p>Scalable Java cloud application with modular university platform. Deployed on AWS EC2 with MySQL on RDS and integrated CloudWatch-style analytics dashboard for real-time metrics tracking.</p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>AWS</span>
-                            <span>MySQL</span>
-                        </div>
-                        <a href="#" class="project-link">More Details →</a>
+                        <ul class="contact-email-list" role="list">
+                            <li class="contact-email-row contact-email-row--primary">
+                                <span class="contact-email-row__label" id="contact-label-personal">Email (preferred)</span>
+                                <a class="contact-email-row__mailto" href="mailto:tayyabahmed561@gmail.com">tayyabahmed561@gmail.com</a>
+                                <span class="contact-email-row__tail">
+                                    <button
+                                        type="button"
+                                        class="contact-copy-btn"
+                                        data-copy-email="tayyabahmed561@gmail.com"
+                                        aria-labelledby="contact-label-personal contact-copy-personal-h"
+                                    >
+                                        <svg class="contact-copy-btn__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                        <span class="visually-hidden" id="contact-copy-personal-h">Copy personal email</span>
+                                    </button>
+                                    <span class="contact-copy-status" role="status" aria-live="polite"></span>
+                                </span>
+                            </li>
+                            <li class="contact-email-row contact-email-row--school">
+                                <span class="contact-email-row__label" id="contact-label-school">School</span>
+                                <a class="contact-email-row__mailto" href="mailto:tahmed06@uoguelph.ca">tahmed06@uoguelph.ca</a>
+                                <span class="contact-email-row__tail">
+                                    <button
+                                        type="button"
+                                        class="contact-copy-btn"
+                                        data-copy-email="tahmed06@uoguelph.ca"
+                                        aria-labelledby="contact-label-school contact-copy-school-h"
+                                    >
+                                        <svg class="contact-copy-btn__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                        <span class="visually-hidden" id="contact-copy-school-h">Copy school email</span>
+                                    </button>
+                                    <span class="contact-copy-status" role="status" aria-live="polite"></span>
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="contact-content">
-                    <p class="contact-description">
-                        Want to chat, collaborate, or discuss a project? I'm always open to new opportunities and interesting conversations about technology and innovation.
-                    </p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:tahmed06@uoguelph.ca">tahmed06@uoguelph.ca</a>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+15194973310">+1 (519) 497-3310</a>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/tayyabmahmed/" target="_blank">LinkedIn</a>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-github"></i>
-                            <a href="https://github.com/TayyabAhmed561" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Tayyab Ahmed. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/TayyabAhmed561" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/tayyabmahmed/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
+                <nav class="panel-footer-nav" aria-label="Section quick links" data-panel-footer-nav>
+                    <a href="#featured" class="panel-footer-nav__link tab-trigger" data-tab="featured" data-panel-footer-link="featured">Featured</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#research" class="panel-footer-nav__link tab-trigger" data-tab="research" data-panel-footer-link="research">Research</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#projects" class="panel-footer-nav__link tab-trigger" data-tab="projects" data-panel-footer-link="projects">Projects</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#experience" class="panel-footer-nav__link tab-trigger" data-tab="experience" data-panel-footer-link="experience">Experience</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#education" class="panel-footer-nav__link tab-trigger" data-tab="education" data-panel-footer-link="education">Education</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#gallery" class="panel-footer-nav__link tab-trigger" data-tab="gallery" data-panel-footer-link="gallery">Gallery</a>
+                    <span class="panel-footer-nav__sep" aria-hidden="true">·</span>
+                    <a href="#contact" class="panel-footer-nav__link tab-trigger" data-tab="contact" data-panel-footer-link="contact">Contact</a>
+                </nav>
             </div>
         </div>
+    </div>
+
+    <footer class="site-footer site-footer--shell">
+        <p>© 2026 Tayyab Ahmed</p>
     </footer>
 
+    <script src="js/rising-particles.js"></script>
+    <script src="js/perplexity-backgrounds.js"></script>
+    <script src="js/film-strip.js"></script>
+    <script src="js/research-workspace.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

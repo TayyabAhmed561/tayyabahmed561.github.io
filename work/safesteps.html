@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSteps: Deep dive · Tayyab Ahmed</title>
+    <link rel="stylesheet" href="../perplexity-theme.css">
+    <link rel="stylesheet" href="../perplexity-animations.css">
+    <link rel="stylesheet" href="../rising-particles.css">
+    <link rel="stylesheet" href="../editorial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-body">
+    <div id="static-stars-root" aria-hidden="true"></div>
+    <div id="rising-particles-root" aria-hidden="true">
+        <div class="animation-wrapper">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+        </div>
+    </div>
+
+    <div class="deep-dive-layout">
+        <a href="../index.html#featured" class="deep-dive-back">← Back to portfolio</a>
+
+        <article class="deep-dive">
+            <header class="deep-dive__header">
+                <h1 class="deep-dive__title">SafeSteps</h1>
+                <p class="deep-dive__meta">Applied NLP · safety · real-world data</p>
+            </header>
+
+            <section class="deep-dive__section" aria-labelledby="ss-overview">
+                <h2 id="ss-overview">Overview</h2>
+                <p>
+                    SafeSteps came from trying to deal with messy, user-generated data in a way that could actually be useful. The goal was to classify hazard reports, not in a clean benchmark setting, but in a way that could realistically support decision-making.
+                </p>
+                <p>
+                    It sits somewhere between a simple text classifier and something that could actually matter in real-world scenarios.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ss-difficult">
+                <h2 id="ss-difficult">What made it difficult</h2>
+                <p>
+                    The data was all over the place. Short text, typos, inconsistent phrasing, and heavy class imbalance. The rare cases were often the most important, but also the hardest to model.
+                </p>
+                <p>
+                    Another issue was that categories weren’t fixed. As I worked more with the data, I kept running into edge cases that didn’t fit cleanly into existing labels.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ss-approach">
+                <h2 id="ss-approach">Approach</h2>
+                <p>
+                    I built a simple but flexible pipeline using MongoDB for storage and lightweight NLP models for classification. Instead of jumping into complex architectures, I focused on iteration speed and understanding errors.
+                </p>
+                <p>
+                    The goal was to stay close to the data and make improvements based on actual failure cases, not just metrics.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ss-iteration-debug">
+                <h2 id="ss-iteration-debug">Iteration and debugging</h2>
+                <p>
+                    A lot of progress came from grouping errors. I looked at which phrases consistently confused the model and tried to understand whether it was a data issue or a modeling issue.
+                </p>
+                <p>
+                    Some augmentations didn’t work as expected because they didn’t match how users actually write. I had to adjust both the data and the labeling strategy as I went.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ss-eval">
+                <h2 id="ss-eval">Evaluation</h2>
+                <p>
+                    I paid more attention to per-class performance, especially recall for rare hazards. Missing those matters more than getting common cases right.
+                </p>
+                <p>
+                    I also reviewed false positives manually, since too many of those could make the system less useful in practice.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ss-takeaways">
+                <h2 id="ss-takeaways">Takeaways</h2>
+                <p>
+                    This project showed me how important the data and labeling process is. In a lot of cases, improving the dataset gave better results than changing the model.
+                </p>
+                <p>
+                    It also reinforced that real-world NLP is messy, and you have to design systems that can handle that.
+                </p>
+            </section>
+
+            <p class="deep-dive__footer-note">
+                Repository and build context available on <a href="https://github.com/TayyabAhmed561/SafeSteps" target="_blank" rel="noopener noreferrer">GitHub</a> and <a href="https://devpost.com/software/safesteps-x93v1t" target="_blank" rel="noopener noreferrer">Devpost</a>.
+            </p>
+        </article>
+    </div>
+
+    <footer class="site-footer site-footer--shell">
+        <p>© 2026 Tayyab Ahmed</p>
+    </footer>
+
+    <script src="../js/rising-particles.js"></script>
+    <script src="../js/perplexity-backgrounds.js"></script>
+</body>
+</html>

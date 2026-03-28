@@ -1,0 +1,180 @@
+/* ============================================
+   PERPLEXITY-STYLE ANIMATIONS
+   ============================================ */
+
+/* ===== Floating Particles ===== */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* ===== Soft Star Twinkles ===== */
+@keyframes softTwinkle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* ===== Gold Sparkles ===== */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* ===== Cosmic Light Streaks ===== */
+@keyframes streakMove {
+    0% {
+        transform: translateY(-200px) rotate(var(--angle, 0deg));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(100vh) rotate(var(--angle, 0deg));
+        opacity: 0;
+    }
+}
+
+/* ===== Cloud Drift ===== */
+@keyframes cloudDrift {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(50px) translateY(-20px);
+    }
+}
+
+/* ===== Smooth Fade In ===== */
+@keyframes fadeInSmooth {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Glow Pulse ===== */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 224, 255, 0.3), 0 0 40px rgba(0, 224, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 224, 255, 0.5), 0 0 60px rgba(0, 224, 255, 0.2);
+    }
+}
+
+/* ===== Horizontal Cosmic Streak ===== */
+@keyframes horizontalStreak {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+/* ===== Subtle Float ===== */
+@keyframes subtleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== Button Glow ===== */
+@keyframes buttonGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 224, 255, 0.5), 0 0 40px rgba(0, 224, 255, 0.2);
+    }
+}
+
+/* ===== Text Reveal ===== */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        letter-spacing: 0.1em;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.02em;
+    }
+}
+
+/* ===== Parallax Star Movement ===== */
+@keyframes parallaxStar {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+/* ===== Apply animations to elements ===== */
+.fade-in-smooth {
+    animation: fadeInSmooth 0.8s ease-out forwards;
+}
+
+.glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.subtle-float {
+    animation: subtleFloat 4s ease-in-out infinite;
+}
+
+/* ===== Performance optimizations ===== */
+.parallax-star,
+.gold-sparkle,
+.cosmic-streak {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
