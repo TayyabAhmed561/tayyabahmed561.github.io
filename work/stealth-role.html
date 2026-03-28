@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current ML role: Deep dive · Tayyab Ahmed</title>
+    <link rel="stylesheet" href="../perplexity-theme.css">
+    <link rel="stylesheet" href="../perplexity-animations.css">
+    <link rel="stylesheet" href="../rising-particles.css">
+    <link rel="stylesheet" href="../editorial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-body">
+    <div id="static-stars-root" aria-hidden="true"></div>
+    <div id="rising-particles-root" aria-hidden="true">
+        <div class="animation-wrapper">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+        </div>
+    </div>
+
+    <div class="deep-dive-layout">
+        <a href="../index.html#featured" class="deep-dive-back">← Back to Featured</a>
+
+        <article class="deep-dive">
+            <header class="deep-dive__header">
+                <h1 class="deep-dive__title">Machine Learning Engineer</h1>
+                <p class="deep-dive__meta">Stealth AI Startup · Biomedical ML · noisy data · robust evaluation · real-world systems</p>
+            </header>
+
+            <p class="deep-dive__nda-note">
+                Details below are intentionally generalized. No proprietary datasets, metrics, architectures, or product-specific information are disclosed.
+            </p>
+
+            <section class="deep-dive__section" aria-labelledby="sr-overview">
+                <h2 id="sr-overview">Overview</h2>
+                <p>
+                    This role focused on end-to-end ownership of machine learning systems applied to biomedical imaging. The work involved moving from raw or lightly processed inputs through training pipelines to validation outputs that remain credible under real-world acquisition noise, rather than idealized benchmark conditions.
+                </p>
+                <p>
+                    The emphasis was not only on model performance, but on building systems that behave reliably under constrained, imperfect data environments.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="sr-hard">
+                <h2 id="sr-hard">Why it was hard</h2>
+                <p>
+                    Data arrived under shifting acquisition conditions, with limited labels and heterogeneous cohorts. Standard augmentation strategies and random splits often overstated performance, while deployment constraints introduced additional tradeoffs around latency, memory, and reproducibility.
+                </p>
+                <p>
+                    In practice, the challenge was less about increasing model complexity and more about understanding what the model was actually learning and how it behaved across different subsets of data.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="sr-approach">
+                <h2 id="sr-approach">Approach</h2>
+                <p>
+                    Work emphasized careful preprocessing, structured validation strategies, and evaluation plans that reflected real-world usage. This included cross-validation approaches that respect grouping structure where appropriate, along with systematic error analysis rather than relying solely on aggregate metrics.
+                </p>
+                <p>
+                    Modeling was implemented through iterative pipelines, where each cycle was driven by observed failure cases and data behavior, rather than only optimizing for headline performance.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="sr-debug">
+                <h2 id="sr-debug">What broke &amp; iteration</h2>
+                <p>
+                    Failures often appeared as instability across validation splits, sensitivity to preprocessing choices, and edge-case behavior in underrepresented classes. Debugging required tracing issues back to data curation, splitting strategy, and input representation rather than treating every issue as a modeling problem.
+                </p>
+                <p>
+                    Iteration focused on making failure modes visible early and refining the pipeline to reduce variance and improve consistency across conditions.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="sr-eval">
+                <h2 id="sr-eval">Evaluation</h2>
+                <p>
+                    Evaluation prioritized robustness and interpretability over single-point performance metrics. This included examining variance across folds, inspecting error structure, and documenting assumptions behind each experiment.
+                </p>
+                <p>
+                    The goal was to produce results that remain defensible under small-data and noisy conditions, rather than optimizing for idealized evaluation setups.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="sr-lessons">
+                <h2 id="sr-lessons">Lessons learned</h2>
+                <p>
+                    In applied biomedical machine learning, the pipeline and evaluation strategy are as important as the model itself. Data quality, validation design, and understanding failure modes consistently had a larger impact than architectural changes.
+                </p>
+                <p>
+                    The most valuable improvements came from making system behavior interpretable, iterating based on real errors, and aligning evaluation with how the system would be used in practice.
+                </p>
+            </section>
+
+            <p class="deep-dive__footer-note">
+                For role-specific detail, see the <a href="../index.html#experience">Experience</a> tab on the main site. This note remains intentionally high-level.
+            </p>
+        </article>
+    </div>
+
+    <footer class="site-footer site-footer--shell">
+        <p>© 2026 Tayyab Ahmed</p>
+    </footer>
+
+    <script src="../js/rising-particles.js"></script>
+    <script src="../js/perplexity-backgrounds.js"></script>
+</body>
+</html>

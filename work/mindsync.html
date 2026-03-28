@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSync: Deep dive · Tayyab Ahmed</title>
+    <link rel="stylesheet" href="../perplexity-theme.css">
+    <link rel="stylesheet" href="../perplexity-animations.css">
+    <link rel="stylesheet" href="../rising-particles.css">
+    <link rel="stylesheet" href="../editorial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-body">
+    <div id="static-stars-root" aria-hidden="true"></div>
+    <div id="rising-particles-root" aria-hidden="true">
+        <div class="animation-wrapper">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+        </div>
+    </div>
+
+    <div class="deep-dive-layout">
+        <a href="../index.html#featured" class="deep-dive-back">← Back to portfolio</a>
+
+        <article class="deep-dive">
+            <header class="deep-dive__header">
+                <h1 class="deep-dive__title">MindSync</h1>
+                <p class="deep-dive__meta">EEG · affect estimation · pipeline &amp; evaluation</p>
+            </header>
+
+            <section class="deep-dive__section" aria-labelledby="ms-overview">
+                <h2 id="ms-overview">Overview</h2>
+                <p>
+                    MindSync started with a pretty simple question: can you actually get anything meaningful about emotional state from EEG, especially in messy, real-world conditions? Not lab-perfect signals, but the kind you’d get in a student setup, short recordings, inconsistent contact, and labels that aren’t always reliable.
+                </p>
+                <p>
+                    I quickly realized this wasn’t going to be about finding the “best model.” It was more about building a pipeline that could handle everything from raw signals to something I could actually evaluate and trust.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ms-difficult">
+                <h2 id="ms-difficult">What made it difficult</h2>
+                <p>
+                    EEG is just messy. There’s noise everywhere, movement artifacts, drift, and inconsistencies between sessions and people. Early on, I saw models perform well, but it didn’t feel real. Once I looked closer, I realized the splits were leaking information across sessions, so the model was basically memorizing patterns tied to specific recordings.
+                </p>
+                <p>
+                    On top of that, the labels themselves weren’t great. Emotional state is subjective, and the data was imbalanced, so accuracy alone didn’t really mean anything.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ms-approach">
+                <h2 id="ms-approach">Approach</h2>
+                <p>
+                    I treated preprocessing as part of the core system, not just a setup step. Filtering, windowing, normalization, all of it was something I experimented with and documented.
+                </p>
+                <p>
+                    The modeling side was built in PyTorch, keeping things flexible so I could iterate quickly. I wanted to make sure that whenever something improved or broke, I could actually trace it back to either the data, the model, or the evaluation.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ms-iteration-debug">
+                <h2 id="ms-iteration-debug">Iteration and debugging</h2>
+                <p>
+                    At first, I was chasing metrics. Then I realized that wasn’t enough. The model was making confident but completely wrong predictions on noisy segments, which forced me to rethink how I was evaluating things.
+                </p>
+                <p>
+                    I started plotting errors, comparing performance across sessions, and tightening how the data was split. Some augmentations that seemed like a good idea actually made things worse, especially since label noise was already a limiting factor.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ms-eval">
+                <h2 id="ms-eval">Evaluation</h2>
+                <p>
+                    Instead of focusing on one number, I looked at where the model failed. Performance by session, by class, and by signal quality told a much clearer story. It became obvious that some parts of the data were just harder, and pretending otherwise didn’t help.
+                </p>
+            </section>
+
+            <section class="deep-dive__section" aria-labelledby="ms-takeaways">
+                <h2 id="ms-takeaways">Takeaways</h2>
+                <p>
+                    The biggest thing I learned is that in this kind of ML, the pipeline matters more than the model. You can swap architectures easily, but if your data handling and evaluation aren’t solid, the results don’t mean much.
+                </p>
+                <p>
+                    This project really changed how I think about ML, especially when working with noisy, real-world data.
+                </p>
+            </section>
+
+            <p class="deep-dive__footer-note">
+                Code and demo are available on <a href="https://github.com/TayyabAhmed561/MindSync" target="_blank" rel="noopener noreferrer">GitHub</a> and <a href="https://devpost.com/software/mindsync-qny03a" target="_blank" rel="noopener noreferrer">Devpost</a>.
+            </p>
+        </article>
+    </div>
+
+    <footer class="site-footer site-footer--shell">
+        <p>© 2026 Tayyab Ahmed</p>
+    </footer>
+
+    <script src="../js/rising-particles.js"></script>
+    <script src="../js/perplexity-backgrounds.js"></script>
+</body>
+</html>
