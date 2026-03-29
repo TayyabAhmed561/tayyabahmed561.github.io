@@ -355,8 +355,19 @@ class PerplexityBackgrounds {
     }
 }
 
-// Initialize on DOM load
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Scripts are loaded dynamically from the React app after DOMContentLoaded has already fired.
+ * Match rising-particles.js: run immediately when document is ready, otherwise wait for DOMContentLoaded.
+ */
+function initPerplexityBackgrounds() {
+    if (window.__perplexityBackgroundsInitialized) return;
+    window.__perplexityBackgroundsInitialized = true;
     window.perplexityBackgrounds = new PerplexityBackgrounds();
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPerplexityBackgrounds);
+} else {
+    initPerplexityBackgrounds();
+}
 
