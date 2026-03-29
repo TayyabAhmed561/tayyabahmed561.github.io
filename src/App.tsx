@@ -4,6 +4,7 @@ import { BackgroundLayers } from "./BackgroundLayers";
 import { ScrollToTop } from "./ScrollToTop";
 import { LegacyHashRedirect } from "./LegacyHashRedirect";
 import { bindPortfolioDomEffects } from "./initDomEffects";
+import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AppShell } from "./layouts/AppShell";
 import HomePage from "./pages/HomePage";
 import ResearchPage from "./pages/ResearchPage";
@@ -54,6 +55,7 @@ export default function App() {
 
     return (
         <>
+            <GoogleAnalytics />
             <BackgroundLayers />
             <ScrollToTop />
             <LegacyHashRedirect />
@@ -71,7 +73,17 @@ export default function App() {
                 </Route>
             </Routes>
             <footer className="site-footer site-footer--shell">
-                <p>© 2026 Tayyab Ahmed</p>
+                <div className="site-footer-shell__row">
+                    <p>© 2026 Tayyab Ahmed</p>
+                    {import.meta.env.PROD ? (
+                        <p
+                            className="site-footer__traffic"
+                            title="Totals stay in Google Analytics. A public live count would need a small backend or serverless counter."
+                        >
+                            Aggregate traffic · GA4
+                        </p>
+                    ) : null}
+                </div>
             </footer>
         </>
     );
