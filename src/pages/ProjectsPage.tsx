@@ -38,12 +38,10 @@ export default function ProjectsPage() {
                         <span className="project-item__tag">Biomedical ML / Time Series</span>
                     </div>
                     <p className="project-item__desc">
-                        End-to-end pipeline from raw EEG through conditioning to deep models for affect estimation, centering
-                        artifact-heavy biosignals, thin labels, and whether splits leak session structure before claiming
-                        “real-time” performance.
+                        EEG-based ML pipeline for affect estimation under noisy, real-world conditions, focusing on
+                        preprocessing, evaluation, and reliability under data constraints.
                     </p>
-                    <p className="project-item__signals">Noisy biosignals · session-aware validation · ablations &amp; error stratification</p>
-                    <p className="project-item__tech">Python · PyTorch · DSP / EEG</p>
+                    <p className="project-item__tech">PyTorch · EEG · ML pipelines</p>
                     <div className="project-item__links">
                         <a href="/work/mindsync.html" className="project-item__link-deep">
                             Deep dive
@@ -92,12 +90,10 @@ export default function ProjectsPage() {
                         <span className="project-item__tag">Applied NLP / Safety</span>
                     </div>
                     <p className="project-item__desc">
-                        Hazard reporting flows with messy user text in the wild; classification and routing under class
-                        imbalance, with emphasis on failure slices, label noise, and tightening the schema when the model
-                        confidently misfires.
+                        Data-driven safety platform combining NLP and geospatial analytics to classify, prioritize, and route
+                        hazard reports in real-world environments.
                     </p>
-                    <p className="project-item__signals">Imbalanced classes · error-driven labeling · operational NLP</p>
-                    <p className="project-item__tech">Python · MongoDB · NLP</p>
+                    <p className="project-item__tech">MongoDB · NLP · Geo analytics</p>
                     <div className="project-item__links">
                         <a href="/work/safesteps.html" className="project-item__link-deep">
                             Deep dive
@@ -128,11 +124,10 @@ export default function ProjectsPage() {
                         <span className="project-item__tag">Geospatial / Data Viz</span>
                     </div>
                     <p className="project-item__desc">
-                        Exploratory stack for species occurrence data: filtering suspect records, map-backed sanity checks,
-                        and aggregates transparent enough that domain experts can see what a heatmap is (and isn’t) evidence
-                        for.
+                        Interactive geospatial platform for visualizing endangered species data and increasing local awareness
+                        through map-based insights.
                     </p>
-                    <p className="project-item__tech">React · Mapbox · JavaScript</p>
+                    <p className="project-item__tech">React · Mapbox · Data visualization</p>
                     <div className="project-item__links">
                         <a href="https://devpost.com/software/esv-endangered-species-visualizer" target="_blank" rel="noopener noreferrer">
                             Devpost
@@ -145,10 +140,10 @@ export default function ProjectsPage() {
                         <span className="project-item__tag">Backend / Systems</span>
                     </div>
                     <p className="project-item__desc">
-                        Multi-tenant Java services with RBAC and analytics paths that had to stay correct under concurrent use:
-                        systems engineering that sits alongside ML work when reliability and data integrity are non-negotiable.
+                        Scalable Java cloud application built with modular OOP design, deployed on a custom database, with
+                        integrated real-time system metrics monitoring.
                     </p>
-                    <p className="project-item__tech">Java · AWS · MySQL</p>
+                    <p className="project-item__tech">Java · Cloud · System design</p>
                     <div className="project-item__links">
                         <a href="https://github.com/TayyabAhmed561/UniversityManagementSystem" target="_blank" rel="noopener noreferrer">
                             GitHub
@@ -161,10 +156,10 @@ export default function ProjectsPage() {
                         <span className="project-item__tag">Embedded / Control</span>
                     </div>
                     <p className="project-item__desc">
-                        Closed-loop stabilization from noisy IMU streams: calibration drift, filter tuning, and closing the gap
-                        between bench models and hardware that actually shakes in your hands.
+                        Embedded stabilization system using IMU data and closed-loop control, focused on real-time orientation
+                        correction and hardware reliability.
                     </p>
-                    <p className="project-item__tech">Arduino · C++ · Embedded Systems</p>
+                    <p className="project-item__tech">C++ · Embedded · Control systems</p>
                     <div className="project-item__links">
                         <a href="https://github.com/TayyabAhmed561/3-Axis-Gimbal" target="_blank" rel="noopener noreferrer">
                             GitHub

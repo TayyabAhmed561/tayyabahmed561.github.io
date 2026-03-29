@@ -33,60 +33,60 @@
             <section class="deep-dive__section" aria-labelledby="ss-overview">
                 <h2 id="ss-overview">Overview</h2>
                 <p>
-                    SafeSteps came from trying to deal with messy, user-generated data in a way that could actually be useful. The goal was to classify hazard reports, not in a clean benchmark setting, but in a way that could realistically support decision-making.
+                    SafeSteps was built to handle messy, user-generated hazard data and turn it into something actionable. The goal was to move beyond a simple text classifier and build a system that could realistically support safer routing and decision-making.
                 </p>
                 <p>
-                    It sits somewhere between a simple text classifier and something that could actually matter in real-world scenarios.
+                    It combines NLP-based classification with geospatial context, sitting somewhere between a lightweight ML system and a practical real-world application.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ss-difficult">
                 <h2 id="ss-difficult">What made it difficult</h2>
                 <p>
-                    The data was all over the place. Short text, typos, inconsistent phrasing, and heavy class imbalance. The rare cases were often the most important, but also the hardest to model.
+                    The data was highly unstructured. Reports were short, inconsistent, full of typos, and heavily imbalanced. The most critical hazards were often the rarest, making them the hardest to model effectively.
                 </p>
                 <p>
-                    Another issue was that categories weren’t fixed. As I worked more with the data, I kept running into edge cases that didn’t fit cleanly into existing labels.
+                    Another challenge was that categories were not fixed. As more data was explored, edge cases kept appearing that didn’t cleanly fit into predefined labels, requiring ongoing adjustments to the labeling strategy.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ss-approach">
                 <h2 id="ss-approach">Approach</h2>
                 <p>
-                    I built a simple but flexible pipeline using MongoDB for storage and lightweight NLP models for classification. Instead of jumping into complex architectures, I focused on iteration speed and understanding errors.
+                    A flexible pipeline was built using MongoDB for storage and lightweight NLP models for classification, allowing for fast iteration and easy inspection of results.
                 </p>
                 <p>
-                    The goal was to stay close to the data and make improvements based on actual failure cases, not just metrics.
+                    Beyond classification, the system incorporated basic geospatial reasoning to prioritize hazards based on severity, frequency, and historical patterns. The focus was not on complexity, but on building something interpretable and adaptable.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ss-iteration-debug">
                 <h2 id="ss-iteration-debug">Iteration and debugging</h2>
                 <p>
-                    A lot of progress came from grouping errors. I looked at which phrases consistently confused the model and tried to understand whether it was a data issue or a modeling issue.
+                    Progress came primarily from analyzing failure cases. Misclassifications were grouped and examined to determine whether the issue came from the data, the labeling, or the model itself.
                 </p>
                 <p>
-                    Some augmentations didn’t work as expected because they didn’t match how users actually write. I had to adjust both the data and the labeling strategy as I went.
+                    Some augmentation strategies failed because they didn’t reflect how users actually write. This required adjusting both preprocessing and labeling approaches to better match real-world inputs.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ss-eval">
                 <h2 id="ss-eval">Evaluation</h2>
                 <p>
-                    I paid more attention to per-class performance, especially recall for rare hazards. Missing those matters more than getting common cases right.
+                    Evaluation focused on per-class performance rather than overall accuracy. Recall for rare but critical hazards was prioritized, since missing these cases would significantly reduce the system’s usefulness.
                 </p>
                 <p>
-                    I also reviewed false positives manually, since too many of those could make the system less useful in practice.
+                    False positives were also manually reviewed, since excessive noise in predictions could reduce trust in the system.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ss-takeaways">
                 <h2 id="ss-takeaways">Takeaways</h2>
                 <p>
-                    This project showed me how important the data and labeling process is. In a lot of cases, improving the dataset gave better results than changing the model.
+                    This project reinforced that in real-world NLP systems, data quality and labeling strategy often matter more than model choice.
                 </p>
                 <p>
-                    It also reinforced that real-world NLP is messy, and you have to design systems that can handle that.
+                    It also highlighted the importance of designing systems that can handle messy, evolving inputs rather than relying on fixed assumptions about data structure.
                 </p>
             </section>
 

@@ -1,7 +1,7 @@
 /**
  * Research workspace: append entries to RESEARCH_ENTRIES, then call researchWorkspaceRefresh().
  *
- * Sections: experiments, paperAttempts, openQuestions.
+ * Sections: notes (React-rendered feed; no data-research-feed in SPA), experiments, paperAttempts, openQuestions.
  * Published notes live in React (src/data/researchNotes.ts) with routes /research/:slug.
  *
  * Future extension (openQuestions): replace renderFeed empty branch with API-driven list + optional
@@ -20,15 +20,17 @@
  * }
  */
 (function () {
-    const SECTION_KEYS = ["experiments", "paperAttempts", "openQuestions"];
+    const SECTION_KEYS = ["notes", "experiments", "paperAttempts", "openQuestions"];
 
     const TYPE_LABELS = {
+        notes: "Note",
         experiments: "Experiment",
         paperAttempts: "Paper Attempt",
         openQuestions: "Open Question",
     };
 
     const EMPTY_HINTS = {
+        notes: "Short-form notes are listed in the React app.",
         experiments: "Experiment notes and small technical studies will be added here as they are documented.",
         paperAttempts: "Implementation-oriented paper explorations will appear here over time.",
         openQuestions:
@@ -36,12 +38,14 @@
     };
 
     const SUBSECTION_NAV_LABELS = {
+        notes: "Notes",
         experiments: "Experiments",
         paperAttempts: "Paper Attempts",
         openQuestions: "Open Questions",
     };
 
     const RESEARCH_ENTRIES = {
+        notes: [],
         experiments: [],
         paperAttempts: [],
         openQuestions: [],
@@ -201,12 +205,24 @@
         });
     }
 
+    let researchSubtabDelegationBound = false;
+
+    /**
+     * Subtabs are React-mounted after this script may have run; delegate from document so clicks
+     * work on first visit to /research without a full reload. Gate on .research-workspace.
+     */
     function initSubtabs() {
-        document.querySelectorAll("[data-research-subtab]").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const k = btn.getAttribute("data-research-subtab");
-                if (k) setResearchSubtab(k);
-            });
+        if (researchSubtabDelegationBound) return;
+        researchSubtabDelegationBound = true;
+        document.addEventListener("click", (e) => {
+            const t = e.target;
+            if (!t || typeof t.closest !== "function") return;
+            const btn = t.closest("[data-research-subtab]");
+            if (!btn || !btn.closest(".research-workspace")) return;
+            const k = btn.getAttribute("data-research-subtab");
+            if (!k) return;
+            e.preventDefault();
+            setResearchSubtab(k);
         });
     }
 

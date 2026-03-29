@@ -9,7 +9,8 @@ import HomePage from "./pages/HomePage";
 import ResearchPage from "./pages/ResearchPage";
 import ResearchNotePage from "./pages/ResearchNotePage";
 import ProjectsPage from "./pages/ProjectsPage";
-import AboutPage from "./pages/AboutPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import EducationPage from "./pages/EducationPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
 
@@ -62,7 +63,8 @@ export default function App() {
                     <Route path="research/:slug" element={<ResearchNotePage />} />
                     <Route path="research" element={<ResearchPage />} />
                     <Route path="projects" element={<ProjectsPage />} />
-                    <Route path="about" element={<AboutPage />} />
+                    <Route path="about" element={<ExperiencePage />} />
+                    <Route path="education" element={<EducationPage />} />
                     <Route path="gallery" element={<GalleryPage />} />
                     <Route path="contact" element={<ContactPage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />

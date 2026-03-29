@@ -17,8 +17,8 @@ export function AppShell() {
                         <header className="sidebar-section sidebar-section--hero">
                             <h1 className="intro__name">Tayyab Ahmed</h1>
                             <p className="intro__tagline">
-                                Research-oriented engineer focused on building and evaluating machine learning systems
-                                for real-world, multimodal, and data-constrained problems.
+                                Research-oriented engineer focused on designing and evaluating machine learning systems for
+                                real-world, multimodal, and data-constrained environments.
                             </p>
                         </header>
 
@@ -26,6 +26,7 @@ export function AppShell() {
                             <p className="sidebar-section__label">Info</p>
                             <div className="intro__meta-stacked">
                                 <span>University of Guelph</span>
+                                <span>Computer Engineering (Co-op)</span>
                                 <span>Toronto, Ontario</span>
                             </div>
                         </section>
@@ -38,26 +39,26 @@ export function AppShell() {
                         <section className="sidebar-section sidebar-section--tech" aria-label="Technical focus">
                             <p className="sidebar-section__label">Tech focus</p>
                             <p className="intro__accent-line intro__accent-line--muted">
-                                pytorch · cv · nlp · pipelines · evaluation · agentic workflows
+                                pytorch · computer vision · nlp · ml pipelines · evaluation · agentic systems
                             </p>
                         </section>
 
                         <section className="sidebar-section sidebar-section--research-interests" aria-label="Research interests">
                             <p className="sidebar-section__label">Research interests</p>
                             <p className="intro__accent-line intro__accent-line--muted">
-                                Learning under data limits · multimodal modeling · robust real-world pipelines ·
-                                evaluation, generalization &amp; debugging
+                                Learning under data constraints · multimodal systems · robust real-world pipelines ·
+                                evaluation and generalization
                             </p>
                         </section>
 
                         <section className="sidebar-section sidebar-section--signals" aria-label="Technical signals">
                             <p className="sidebar-section__label">Technical signals</p>
                             <ul className="research-signals" role="list">
-                                <li>Small-scale &amp; noisy datasets</li>
+                                <li>Small-scale and noisy datasets</li>
                                 <li>Grouped / patient-level validation</li>
                                 <li>Multimodal inputs</li>
-                                <li>Cross-validation &amp; error analysis</li>
-                                <li>Deployment-aware metrics</li>
+                                <li>Cross-validation and error analysis</li>
+                                <li>Deployment-aware evaluation</li>
                             </ul>
                         </section>
 
@@ -90,9 +91,19 @@ export function AppShell() {
                                 </span>
                                 <NavLink
                                     to="/about"
+                                    end
                                     className={({ isActive }) => `intro__link${isActive ? " is-active" : ""}`}
                                 >
-                                    About
+                                    Experience
+                                </NavLink>
+                                <span className="intro__links-sep" aria-hidden="true">
+                                    ·
+                                </span>
+                                <NavLink
+                                    to="/education"
+                                    className={({ isActive }) => `intro__link${isActive ? " is-active" : ""}`}
+                                >
+                                    Education
                                 </NavLink>
                                 <span className="intro__links-break" aria-hidden="true" />
                                 <a
@@ -146,8 +157,11 @@ export function AppShell() {
                     <NavLink to="/projects" role="tab" id="tab-projects" className={tabClass}>
                         Projects
                     </NavLink>
-                    <NavLink to="/about" role="tab" id="tab-about" className={tabClass}>
-                        About
+                    <NavLink to="/about" end role="tab" id="tab-experience" className={tabClass}>
+                        Experience
+                    </NavLink>
+                    <NavLink to="/education" role="tab" id="tab-education" className={tabClass}>
+                        Education
                     </NavLink>
                     <NavLink to="/gallery" role="tab" id="tab-gallery" className={tabClass}>
                         Gallery
@@ -187,13 +201,13 @@ export function AppShell() {
                         <span className="panel-footer-nav__sep" aria-hidden="true">
                             ·
                         </span>
-                        <NavLink to="/about#experience" className={footerLinkClass}>
+                        <NavLink to="/about" end className={footerLinkClass}>
                             Experience
                         </NavLink>
                         <span className="panel-footer-nav__sep" aria-hidden="true">
                             ·
                         </span>
-                        <NavLink to="/about#education" className={footerLinkClass}>
+                        <NavLink to="/education" className={footerLinkClass}>
                             Education
                         </NavLink>
                         <span className="panel-footer-nav__sep" aria-hidden="true">

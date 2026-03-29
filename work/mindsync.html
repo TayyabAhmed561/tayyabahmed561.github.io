@@ -36,54 +36,57 @@
                     MindSync started with a pretty simple question: can you actually get anything meaningful about emotional state from EEG, especially in messy, real-world conditions? Not lab-perfect signals, but the kind you’d get in a student setup, short recordings, inconsistent contact, and labels that aren’t always reliable.
                 </p>
                 <p>
-                    I quickly realized this wasn’t going to be about finding the “best model.” It was more about building a pipeline that could handle everything from raw signals to something I could actually evaluate and trust.
+                    It quickly became clear this wasn’t going to be about finding the “best model.” It was more about building a pipeline that could handle everything from raw signals to something that could actually be evaluated and trusted.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ms-difficult">
                 <h2 id="ms-difficult">What made it difficult</h2>
                 <p>
-                    EEG is just messy. There’s noise everywhere, movement artifacts, drift, and inconsistencies between sessions and people. Early on, I saw models perform well, but it didn’t feel real. Once I looked closer, I realized the splits were leaking information across sessions, so the model was basically memorizing patterns tied to specific recordings.
+                    EEG is just messy. There’s noise everywhere, movement artifacts, drift, and inconsistencies between sessions and people. Early on, models seemed to perform well, but it didn’t feel real. Looking closer, the issue came from data leakage across sessions, meaning the model was effectively memorizing patterns tied to specific recordings.
                 </p>
                 <p>
-                    On top of that, the labels themselves weren’t great. Emotional state is subjective, and the data was imbalanced, so accuracy alone didn’t really mean anything.
+                    On top of that, the labels themselves weren’t strong. Emotional state is subjective, and the dataset was imbalanced, so accuracy alone didn’t really mean anything.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ms-approach">
                 <h2 id="ms-approach">Approach</h2>
                 <p>
-                    I treated preprocessing as part of the core system, not just a setup step. Filtering, windowing, normalization, all of it was something I experimented with and documented.
+                    Preprocessing was treated as part of the core system, not just a setup step. Filtering, windowing, normalization, and segmentation were all actively explored and iterated on.
                 </p>
                 <p>
-                    The modeling side was built in PyTorch, keeping things flexible so I could iterate quickly. I wanted to make sure that whenever something improved or broke, I could actually trace it back to either the data, the model, or the evaluation.
+                    The modeling pipeline was built in PyTorch, keeping things flexible to allow fast iteration and traceable debugging. The goal was to make sure that whenever performance changed, it could be clearly attributed to either the data, the model, or the evaluation setup.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ms-iteration-debug">
                 <h2 id="ms-iteration-debug">Iteration and debugging</h2>
                 <p>
-                    At first, I was chasing metrics. Then I realized that wasn’t enough. The model was making confident but completely wrong predictions on noisy segments, which forced me to rethink how I was evaluating things.
+                    At first, the focus was on improving metrics, but that quickly broke down. The model was making confident but incorrect predictions on noisy segments, which forced a shift in how performance was being evaluated.
                 </p>
                 <p>
-                    I started plotting errors, comparing performance across sessions, and tightening how the data was split. Some augmentations that seemed like a good idea actually made things worse, especially since label noise was already a limiting factor.
+                    Error patterns were analyzed across sessions, and the data splitting strategy was tightened to avoid leakage. Some augmentations that initially seemed helpful actually degraded performance, especially given the existing label noise.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ms-eval">
                 <h2 id="ms-eval">Evaluation</h2>
                 <p>
-                    Instead of focusing on one number, I looked at where the model failed. Performance by session, by class, and by signal quality told a much clearer story. It became obvious that some parts of the data were just harder, and pretending otherwise didn’t help.
+                    Instead of relying on a single aggregate metric, evaluation focused on where the model failed. Performance was broken down by session, class, and signal quality, which provided a much clearer understanding of model behavior.
+                </p>
+                <p>
+                    This made it obvious that certain parts of the dataset were inherently harder, and treating all samples equally led to misleading conclusions.
                 </p>
             </section>
 
             <section class="deep-dive__section" aria-labelledby="ms-takeaways">
                 <h2 id="ms-takeaways">Takeaways</h2>
                 <p>
-                    The biggest thing I learned is that in this kind of ML, the pipeline matters more than the model. You can swap architectures easily, but if your data handling and evaluation aren’t solid, the results don’t mean much.
+                    The biggest takeaway from this project is that in this kind of machine learning setting, the pipeline matters more than the model. Architectures can be swapped easily, but if data handling and evaluation are not reliable, the results don’t carry much meaning.
                 </p>
                 <p>
-                    This project really changed how I think about ML, especially when working with noisy, real-world data.
+                    This project fundamentally changed how machine learning systems are approached, especially when working with noisy, real-world data under tight constraints.
                 </p>
             </section>
 

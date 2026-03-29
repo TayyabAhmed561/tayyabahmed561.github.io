@@ -7,6 +7,18 @@ export default function HomePage() {
             <p className="featured__lede">
                 A curated overview of applied machine learning systems, real-world experience, and technical deep dives.
             </p>
+            <Link to="/research" className="featured-research-teaser">
+                <span className="featured-research-teaser__main">
+                    <span className="featured-research-teaser__label">Research notes</span>
+                    <span className="featured-research-teaser__sep" aria-hidden="true">
+                        ·
+                    </span>
+                    <span className="featured-research-teaser__hint">data, evaluation, and systems</span>
+                </span>
+                <span className="featured-research-teaser__chevron" aria-hidden="true">
+                    →
+                </span>
+            </Link>
 
             <section className="featured-highlight" aria-labelledby="featured-role-title">
                 <h2 id="featured-role-title" className="featured-highlight__title">
@@ -14,8 +26,9 @@ export default function HomePage() {
                 </h2>
                 <p className="featured-highlight__subtitle">Biomedical ML · Noisy data · Robust evaluation · Real-world systems</p>
                 <p className="featured-highlight__desc">
-                    End-to-end ML for biomedical imaging under noisy, real-world conditions: preprocessing, validation, error
-                    analysis, and tradeoffs when data and deployment constraints are tight.
+                    Python/PyTorch computer vision for noisy biomedical imaging: CNN training on small heterogeneous
+                    datasets under tight validation, preprocessing and feature work for robustness and patient-level
+                    generalization, plus structured validation and error analysis for interpretable performance.
                 </p>
                 <div className="featured-highlight__actions">
                     <Link to="/about" className="featured-highlight__action">
@@ -63,8 +76,8 @@ export default function HomePage() {
                     <li className="walkthrough-card">
                         <h3 className="walkthrough-card__title">MindSync | EEG-Based ML Pipeline</h3>
                         <p className="walkthrough-card__desc">
-                            End-to-end pipeline for affect estimation from noisy EEG signals, focusing on preprocessing,
-                            session-aware validation, and evaluation under limited labels.
+                            EEG-based ML pipeline for affect estimation under noisy, real-world conditions, focusing on
+                            preprocessing, evaluation, and reliability under data constraints.
                         </p>
                         <div className="walkthrough-card__embed">
                             <iframe
@@ -95,10 +108,10 @@ export default function HomePage() {
                         </div>
                     </li>
                     <li className="walkthrough-card">
-                        <h3 className="walkthrough-card__title">ESV | Geospatial ML Visualization</h3>
+                        <h3 className="walkthrough-card__title">ESV | Geospatial Data Visualization</h3>
                         <p className="walkthrough-card__desc">
-                            Interactive platform for exploring endangered species data using spatial analysis and real-time
-                            filtering, designed to handle noisy and heterogeneous datasets.
+                            Interactive geospatial platform for visualizing endangered species data and increasing local
+                            awareness through map-based insights.
                         </p>
                         <div className="walkthrough-card__embed">
                             <iframe
@@ -123,10 +136,10 @@ export default function HomePage() {
                         </div>
                     </li>
                     <li className="walkthrough-card">
-                        <h3 className="walkthrough-card__title">SafeSteps | NLP + Agent Workflow System</h3>
+                        <h3 className="walkthrough-card__title">SafeSteps | NLP &amp; Geospatial Safety</h3>
                         <p className="walkthrough-card__desc">
-                            Multi-step workflow system for hazard reporting and routing using NLP classification and structured
-                            orchestration, highlighting real-world input variability and system constraints.
+                            Data-driven safety platform combining NLP and geospatial analytics to classify, prioritize, and
+                            route hazard reports in real-world environments.
                         </p>
                         <div className="walkthrough-card__embed">
                             <iframe
@@ -174,7 +187,8 @@ export default function HomePage() {
                     <li className="featured-preview">
                         <h3 className="featured-preview__title">MindSync</h3>
                         <p className="featured-preview__desc">
-                            EEG → model path with session-aware splits and error review before “real-time” claims.
+                            EEG-based ML pipeline for affect estimation under noisy conditions—preprocessing, evaluation, and
+                            reliability under data constraints.
                         </p>
                         <Link to="/projects" className="featured-preview__link">
                             Open in Projects
@@ -191,7 +205,10 @@ export default function HomePage() {
                     </li>
                     <li className="featured-preview">
                         <h3 className="featured-preview__title">SafeSteps</h3>
-                        <p className="featured-preview__desc">Operational NLP under imbalance: errors drive schema and label fixes.</p>
+                        <p className="featured-preview__desc">
+                            NLP and geospatial analytics to classify, prioritize, and route hazard reports in real-world
+                            environments.
+                        </p>
                         <Link to="/projects" className="featured-preview__link">
                             Open in Projects
                         </Link>

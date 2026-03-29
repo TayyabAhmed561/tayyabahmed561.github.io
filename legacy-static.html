@@ -27,7 +27,7 @@
                     <header class="sidebar-section sidebar-section--hero">
                         <h1 class="intro__name">Tayyab Ahmed</h1>
                         <p class="intro__tagline">
-                            Research-oriented engineer focused on building and evaluating machine learning systems for real-world, multimodal, and data-constrained problems.
+                            Research-oriented engineer focused on designing and evaluating machine learning systems for real-world, multimodal, and data-constrained environments.
                         </p>
                     </header>
 
@@ -35,6 +35,7 @@
                         <p class="sidebar-section__label">Info</p>
                         <div class="intro__meta-stacked">
                             <span>University of Guelph</span>
+                            <span>Computer Engineering (Co-op)</span>
                             <span>Toronto, Ontario</span>
                         </div>
                     </section>
@@ -47,25 +48,25 @@
                     <section class="sidebar-section sidebar-section--tech" aria-label="Technical focus">
                         <p class="sidebar-section__label">Tech focus</p>
                         <p class="intro__accent-line intro__accent-line--muted">
-                            pytorch · cv · nlp · pipelines · evaluation · agentic workflows
+                            pytorch · computer vision · nlp · ml pipelines · evaluation · agentic systems
                         </p>
                     </section>
 
                     <section class="sidebar-section sidebar-section--research-interests" aria-label="Research interests">
                         <p class="sidebar-section__label">Research interests</p>
                         <p class="intro__accent-line intro__accent-line--muted">
-                            Learning under data limits · multimodal modeling · robust real-world pipelines · evaluation, generalization &amp; debugging
+                            Learning under data constraints · multimodal systems · robust real-world pipelines · evaluation and generalization
                         </p>
                     </section>
 
                     <section class="sidebar-section sidebar-section--signals" aria-label="Technical signals">
                         <p class="sidebar-section__label">Technical signals</p>
                         <ul class="research-signals" role="list">
-                            <li>Small-scale &amp; noisy datasets</li>
+                            <li>Small-scale and noisy datasets</li>
                             <li>Grouped / patient-level validation</li>
                             <li>Multimodal inputs</li>
-                            <li>Cross-validation &amp; error analysis</li>
-                            <li>Deployment-aware metrics</li>
+                            <li>Cross-validation and error analysis</li>
+                            <li>Deployment-aware evaluation</li>
                         </ul>
                     </section>
 
@@ -121,12 +122,20 @@
                     <p class="featured__lede">
                         A curated overview of applied machine learning systems, real-world experience, and technical deep dives.
                     </p>
+                    <a href="/research" class="featured-research-teaser">
+                        <span class="featured-research-teaser__main">
+                            <span class="featured-research-teaser__label">Research notes</span>
+                            <span class="featured-research-teaser__sep" aria-hidden="true">·</span>
+                            <span class="featured-research-teaser__hint">data, evaluation, and systems</span>
+                        </span>
+                        <span class="featured-research-teaser__chevron" aria-hidden="true">→</span>
+                    </a>
 
                     <section class="featured-highlight" aria-labelledby="featured-role-title">
                         <h2 id="featured-role-title" class="featured-highlight__title">Machine Learning Engineer, Stealth AI Startup</h2>
                         <p class="featured-highlight__subtitle">Biomedical ML · Noisy data · Robust evaluation · Real-world systems</p>
                         <p class="featured-highlight__desc">
-                            End-to-end ML for biomedical imaging under noisy, real-world conditions: preprocessing, validation, error analysis, and tradeoffs when data and deployment constraints are tight.
+                            Python/PyTorch computer vision for noisy biomedical imaging: CNN training on small heterogeneous datasets under tight validation, preprocessing and feature work for robustness and patient-level generalization, plus structured validation and error analysis for interpretable performance.
                         </p>
                         <div class="featured-highlight__actions">
                             <a href="#" data-tab="experience" class="tab-trigger featured-highlight__action">View Experience</a>
@@ -167,7 +176,7 @@
                         <ul class="walkthrough-list" role="list">
                             <li class="walkthrough-card">
                                 <h3 class="walkthrough-card__title">MindSync | EEG-Based ML Pipeline</h3>
-                                <p class="walkthrough-card__desc">End-to-end pipeline for affect estimation from noisy EEG signals, focusing on preprocessing, session-aware validation, and evaluation under limited labels.</p>
+                                <p class="walkthrough-card__desc">EEG-based ML pipeline for affect estimation under noisy, real-world conditions, focusing on preprocessing, evaluation, and reliability under data constraints.</p>
                                 <div class="walkthrough-card__embed">
                                     <iframe
                                         src="https://www.youtube.com/embed/50zqtQTgmh8"
@@ -187,8 +196,8 @@
                                 </div>
                             </li>
                             <li class="walkthrough-card">
-                                <h3 class="walkthrough-card__title">ESV | Geospatial ML Visualization</h3>
-                                <p class="walkthrough-card__desc">Interactive platform for exploring endangered species data using spatial analysis and real-time filtering, designed to handle noisy and heterogeneous datasets.</p>
+                                <h3 class="walkthrough-card__title">ESV | Geospatial Data Visualization</h3>
+                                <p class="walkthrough-card__desc">Interactive geospatial platform for visualizing endangered species data and increasing local awareness through map-based insights.</p>
                                 <div class="walkthrough-card__embed">
                                     <!-- Same video as https://youtu.be/66xZr1S3RvE, bump &cb= if the embed thumbnail looks stale after a YouTube thumbnail change -->
                                     <iframe
@@ -207,8 +216,8 @@
                                 </div>
                             </li>
                             <li class="walkthrough-card">
-                                <h3 class="walkthrough-card__title">SafeSteps | NLP + Agent Workflow System</h3>
-                                <p class="walkthrough-card__desc">Multi-step workflow system for hazard reporting and routing using NLP classification and structured orchestration, highlighting real-world input variability and system constraints.</p>
+                                <h3 class="walkthrough-card__title">SafeSteps | NLP &amp; Geospatial Safety</h3>
+                                <p class="walkthrough-card__desc">Data-driven safety platform combining NLP and geospatial analytics to classify, prioritize, and route hazard reports in real-world environments.</p>
                                 <div class="walkthrough-card__embed">
                                     <iframe
                                         src="https://www.youtube.com/embed/_tuEe1CAqak"
@@ -238,7 +247,7 @@
                         <ul class="featured-previews__list" role="list">
                             <li class="featured-preview">
                                 <h3 class="featured-preview__title">MindSync</h3>
-                                <p class="featured-preview__desc">EEG → model path with session-aware splits and error review before “real-time” claims.</p>
+                                <p class="featured-preview__desc">EEG-based ML pipeline for affect estimation under noisy conditions—preprocessing, evaluation, and reliability under data constraints.</p>
                                 <a href="#" data-tab="projects" class="tab-trigger featured-preview__link">Open in Projects</a>
                             </li>
                             <li class="featured-preview">
@@ -248,7 +257,7 @@
                             </li>
                             <li class="featured-preview">
                                 <h3 class="featured-preview__title">SafeSteps</h3>
-                                <p class="featured-preview__desc">Operational NLP under imbalance: errors drive schema and label fixes.</p>
+                                <p class="featured-preview__desc">NLP and geospatial analytics to classify, prioritize, and route hazard reports in real-world environments.</p>
                                 <a href="#" data-tab="projects" class="tab-trigger featured-preview__link">Open in Projects</a>
                             </li>
                         </ul>
@@ -298,9 +307,8 @@
                                 <h3 class="project-item__title">MindSync</h3>
                                 <span class="project-item__tag">Biomedical ML / Time Series</span>
                             </div>
-                            <p class="project-item__desc">End-to-end pipeline from raw EEG through conditioning to deep models for affect estimation, centering artifact-heavy biosignals, thin labels, and whether splits leak session structure before claiming “real-time” performance.</p>
-                            <p class="project-item__signals">Noisy biosignals · session-aware validation · ablations &amp; error stratification</p>
-                            <p class="project-item__tech">Python · PyTorch · DSP / EEG</p>
+                            <p class="project-item__desc">EEG-based ML pipeline for affect estimation under noisy, real-world conditions, focusing on preprocessing, evaluation, and reliability under data constraints.</p>
+                            <p class="project-item__tech">PyTorch · EEG · ML pipelines</p>
                             <div class="project-item__links">
                                 <a href="work/mindsync.html" class="project-item__link-deep">Deep dive</a>
                                 <span class="project-item__link-sep" aria-hidden="true">·</span>
@@ -328,9 +336,8 @@
                                 <h3 class="project-item__title">SafeSteps</h3>
                                 <span class="project-item__tag">Applied NLP / Safety</span>
                             </div>
-                            <p class="project-item__desc">Hazard reporting flows with messy user text in the wild; classification and routing under class imbalance, with emphasis on failure slices, label noise, and tightening the schema when the model confidently misfires.</p>
-                            <p class="project-item__signals">Imbalanced classes · error-driven labeling · operational NLP</p>
-                            <p class="project-item__tech">Python · MongoDB · NLP</p>
+                            <p class="project-item__desc">Data-driven safety platform combining NLP and geospatial analytics to classify, prioritize, and route hazard reports in real-world environments.</p>
+                            <p class="project-item__tech">MongoDB · NLP · Geo analytics</p>
                             <div class="project-item__links">
                                 <a href="work/safesteps.html" class="project-item__link-deep">Deep dive</a>
                                 <span class="project-item__link-sep" aria-hidden="true">·</span>
@@ -346,8 +353,8 @@
                                 <h3 class="project-item__title">ESV (Endangered Species Visualized)</h3>
                                 <span class="project-item__tag">Geospatial / Data Viz</span>
                             </div>
-                            <p class="project-item__desc">Exploratory stack for species occurrence data: filtering suspect records, map-backed sanity checks, and aggregates transparent enough that domain experts can see what a heatmap is (and isn’t) evidence for.</p>
-                            <p class="project-item__tech">React · Mapbox · JavaScript</p>
+                            <p class="project-item__desc">Interactive geospatial platform for visualizing endangered species data and increasing local awareness through map-based insights.</p>
+                            <p class="project-item__tech">React · Mapbox · Data visualization</p>
                             <div class="project-item__links">
                                 <a href="https://devpost.com/software/esv-endangered-species-visualizer" target="_blank" rel="noopener noreferrer">Devpost</a>
                             </div>
@@ -357,8 +364,8 @@
                                 <h3 class="project-item__title">University Management System</h3>
                                 <span class="project-item__tag">Backend / Systems</span>
                             </div>
-                            <p class="project-item__desc">Multi-tenant Java services with RBAC and analytics paths that had to stay correct under concurrent use: systems engineering that sits alongside ML work when reliability and data integrity are non-negotiable.</p>
-                            <p class="project-item__tech">Java · AWS · MySQL</p>
+                            <p class="project-item__desc">Scalable Java cloud application built with modular OOP design, deployed on a custom database, with integrated real-time system metrics monitoring.</p>
+                            <p class="project-item__tech">Java · Cloud · System design</p>
                             <div class="project-item__links">
                                 <a href="https://github.com/TayyabAhmed561/UniversityManagementSystem" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
@@ -368,8 +375,8 @@
                                 <h3 class="project-item__title">Multi-Axis Gimbal</h3>
                                 <span class="project-item__tag">Embedded / Control</span>
                             </div>
-                            <p class="project-item__desc">Closed-loop stabilization from noisy IMU streams: calibration drift, filter tuning, and closing the gap between bench models and hardware that actually shakes in your hands.</p>
-                            <p class="project-item__tech">Arduino · C++ · Embedded Systems</p>
+                            <p class="project-item__desc">Embedded stabilization system using IMU data and closed-loop control, focused on real-time orientation correction and hardware reliability.</p>
+                            <p class="project-item__tech">C++ · Embedded · Control systems</p>
                             <div class="project-item__links">
                                 <a href="https://github.com/TayyabAhmed561/3-Axis-Gimbal" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
@@ -388,9 +395,10 @@
                             <p class="org">Stealth AI Startup</p>
                             <p class="dates">2025 to Present</p>
                             <ul>
-                                <li>Built and iterated on computer vision pipelines for noisy, real-world biomedical image data</li>
-                                <li>Designed preprocessing, training, and evaluation workflows with careful validation and error analysis</li>
-                                <li>Focused on robustness, generalization, and performance under small-data and deployment-constrained settings</li>
+                                <li>Built and iterated on computer vision pipelines in Python/PyTorch for noisy, real-world biomedical imaging data</li>
+                                <li>Trained and evaluated CNN-based models on small, heterogeneous datasets under strict data and validation constraints</li>
+                                <li>Designed preprocessing and feature extraction workflows to improve robustness and patient-level generalization</li>
+                                <li>Applied structured validation strategies (e.g., cross-validation, error analysis) to ensure reliable and interpretable performance</li>
                             </ul>
                             <div class="experience-item__links">
                                 <a href="work/stealth-role.html" class="experience-item__link">View Deep Dive</a>

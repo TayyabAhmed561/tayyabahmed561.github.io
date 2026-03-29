@@ -48,7 +48,7 @@ export const RESEARCH_NOTES: ResearchNote[] = [
                     "How robust and reproducible the pipeline is.",
                     "Understanding how to adapt to results.",
                     "Understanding the data itself in detail and knowing what I'm working with.",
-                    "And how reliable the evaluation actually is.",
+                    "How reliable the evaluation actually is.",
                 ],
             },
             {

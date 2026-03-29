@@ -15,11 +15,11 @@ export function LegacyHashRedirect() {
         done.current = true;
 
         if (raw === "education") {
-            navigate({ pathname: "/about", hash: "#education" }, { replace: true });
+            navigate("/education", { replace: true });
             return;
         }
         if (raw === "experience") {
-            navigate({ pathname: "/about", hash: "#experience" }, { replace: true });
+            navigate("/about", { replace: true });
             return;
         }
 

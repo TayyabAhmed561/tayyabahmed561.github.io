@@ -1199,6 +1199,25 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(105, 145, 175, 0.28) transparent;
+}
+
+.app__sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.app__sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app__sidebar::-webkit-scrollbar-thumb {
+    background: rgba(110, 150, 180, 0.22);
+    border-radius: 999px;
+}
+
+.app__sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(130, 175, 205, 0.38);
 }
 
 /* Editorial profile column — solid panel + subtle depth & accents (professional flare) */
@@ -1528,6 +1547,7 @@ main {
 
 /* Readable measure for text panels; gallery uses full width */
 .panel[data-panel="featured"] .featured__lede,
+.panel[data-panel="featured"] .featured-research-teaser,
 .panel[data-panel="featured"] .featured-highlight,
 .panel[data-panel="featured"] .projects-deep-dives,
 .panel[data-panel="featured"] .featured-walkthroughs,
@@ -1639,6 +1659,93 @@ main {
     line-height: 1.55;
     color: rgba(175, 195, 215, 0.8);
     margin: 0 0 1.2rem;
+}
+
+/* Featured: research notes — compact nav row (matches deep-dive link language) */
+.featured-research-teaser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    width: 100%;
+    max-width: 38em;
+    margin: -0.35rem 0 1.1rem;
+    padding: 0.55rem 0.72rem 0.55rem 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 10px;
+    border: 1px solid rgba(110, 155, 185, 0.14);
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+    transition:
+        border-color 0.22s var(--ease-out),
+        background 0.22s var(--ease-out),
+        box-shadow 0.28s var(--ease-out);
+}
+
+.featured-research-teaser:hover {
+    border-color: rgba(130, 185, 210, 0.24);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow:
+        0 0 28px rgba(80, 140, 180, 0.07),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.featured-research-teaser:focus-visible {
+    outline: 2px solid rgba(130, 190, 215, 0.45);
+    outline-offset: 2px;
+}
+
+.featured-research-teaser:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.featured-research-teaser__main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.45rem;
+    min-width: 0;
+}
+
+.featured-research-teaser__label {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(232, 240, 248, 0.94);
+}
+
+.featured-research-teaser__sep {
+    color: rgba(120, 150, 175, 0.38);
+    font-weight: 400;
+    user-select: none;
+}
+
+.featured-research-teaser__hint {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(140, 168, 195, 0.52);
+}
+
+.featured-research-teaser:hover .featured-research-teaser__hint {
+    color: rgba(165, 195, 218, 0.68);
+}
+
+.featured-research-teaser__chevron {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: rgba(130, 175, 205, 0.42);
+    transition: color 0.2s var(--ease-out), transform 0.22s var(--ease-out);
+}
+
+.featured-research-teaser:hover .featured-research-teaser__chevron {
+    color: rgba(175, 210, 232, 0.75);
+    transform: translateX(2px);
 }
 
 .featured-highlight {
@@ -2981,6 +3088,112 @@ a.research-workspace__latest-jump {
 
 .deep-dive__section p:last-child {
     margin-bottom: 0;
+}
+
+/* Further reading on deep dives — refined cross-link (scoped; not a card/button) */
+.deep-dive__related-note {
+    margin-top: 1.2rem;
+    padding: 0.85rem 1rem 0.95rem 1.05rem;
+    border-left: 2px solid rgba(120, 175, 200, 0.28);
+    border-radius: 0 10px 10px 0;
+    background:
+        linear-gradient(90deg, rgba(70, 125, 165, 0.07) 0%, rgba(255, 255, 255, 0.02) 55%, transparent 100%);
+    box-shadow: 0 0 0 1px rgba(110, 155, 185, 0.07) inset;
+}
+
+.deep-dive__related-note-label {
+    font-family: var(--font-sans);
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(150, 175, 200, 0.48);
+    margin: 0 0 0.5rem;
+}
+
+.deep-dive__related-note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.90625rem;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    line-height: 1.35;
+    color: rgba(205, 230, 248, 0.97);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        color 0.22s var(--ease-out),
+        text-shadow 0.22s var(--ease-out);
+}
+
+.deep-dive__related-note-link-text {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: rgba(100, 165, 195, 0.5);
+    transition: text-decoration-color 0.22s var(--ease-out);
+}
+
+.deep-dive__related-note-link-arrow {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: rgba(130, 180, 210, 0.55);
+    text-decoration: none;
+    transform: translateX(0);
+    transition:
+        color 0.22s var(--ease-out),
+        opacity 0.22s var(--ease-out),
+        transform 0.24s var(--ease-out);
+}
+
+.deep-dive__related-note-link:hover {
+    color: rgba(255, 255, 255, 0.99);
+    text-shadow: 0 0 24px rgba(120, 190, 220, 0.22);
+}
+
+.deep-dive__related-note-link:hover .deep-dive__related-note-link-text {
+    text-decoration-color: rgba(150, 210, 232, 0.85);
+}
+
+.deep-dive__related-note-link:hover .deep-dive__related-note-link-arrow {
+    color: rgba(175, 220, 245, 0.9);
+    transform: translateX(3px);
+}
+
+.deep-dive__related-note-link:focus-visible {
+    outline: 2px solid rgba(130, 190, 215, 0.5);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.deep-dive__related-note-link:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.deep-dive__related-note-hint {
+    font-family: var(--font-sans);
+    font-size: 0.71875rem;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(125, 150, 178, 0.55);
+    margin: 0;
+    max-width: 34em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .deep-dive__related-note-link,
+    .deep-dive__related-note-link-text,
+    .deep-dive__related-note-link-arrow {
+        transition-duration: 0.01ms;
+    }
+
+    .deep-dive__related-note-link:hover .deep-dive__related-note-link-arrow {
+        transform: none;
+    }
 }
 
 .deep-dive__footer-note {
