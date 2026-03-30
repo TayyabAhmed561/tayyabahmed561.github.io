@@ -3005,6 +3005,18 @@ a.research-workspace__latest-jump {
     min-height: 100dvh;
 }
 
+/* Deep dive rendered inside React shell (no duplicate full-viewport body stretch) */
+.deep-dive-body--embedded {
+    min-height: auto;
+}
+
+.deep-dive-shell .deep-dive-loading,
+.deep-dive-fallback {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: rgba(165, 185, 205, 0.75);
+}
+
 .deep-dive-layout {
     position: relative;
     z-index: 2;

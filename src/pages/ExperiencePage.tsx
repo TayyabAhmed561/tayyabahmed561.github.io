@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ExperiencePage() {
     return (
         <div
@@ -36,9 +38,9 @@ export default function ExperiencePage() {
                         </li>
                     </ul>
                     <div className="experience-item__links">
-                        <a href="/work/stealth-role.html" className="experience-item__link">
+                        <Link to="/work/stealth-role" className="experience-item__link">
                             View Deep Dive
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="experience-item">

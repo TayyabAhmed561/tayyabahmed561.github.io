@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ProjectsPage() {
     return (
         <div className="panel is-active" data-panel="projects" role="tabpanel" aria-labelledby="tab-projects">
@@ -10,24 +12,24 @@ export default function ProjectsPage() {
                 </p>
                 <ul className="projects-deep-dives__list" role="list">
                     <li>
-                        <a href="/work/mindsync.html" className="projects-deep-dives__link">
+                        <Link to="/work/mindsync" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">MindSync</span>
                             <span className="projects-deep-dives__link-meta">EEG · limited labels · iteration &amp; evaluation</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/work/safesteps.html" className="projects-deep-dives__link">
+                        <Link to="/work/safesteps" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">SafeSteps</span>
                             <span className="projects-deep-dives__link-meta">NLP in the wild · imbalance · schema fixes</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/work/job-agent.html" className="projects-deep-dives__link">
+                        <Link to="/work/job-agent" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">DraftPilot</span>
                             <span className="projects-deep-dives__link-meta">
                                 Multi-stage pipeline · scoring · human-in-the-loop
                             </span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -43,9 +45,9 @@ export default function ProjectsPage() {
                     </p>
                     <p className="project-item__tech">PyTorch · EEG · ML pipelines</p>
                     <div className="project-item__links">
-                        <a href="/work/mindsync.html" className="project-item__link-deep">
+                        <Link to="/work/mindsync" className="project-item__link-deep">
                             Deep dive
-                        </a>
+                        </Link>
                         <span className="project-item__link-sep" aria-hidden="true">
                             ·
                         </span>
@@ -73,9 +75,9 @@ export default function ProjectsPage() {
                     <p className="project-item__signals">Interpretable scoring · template + LaTeX synthesis · full-stack (React + FastAPI)</p>
                     <p className="project-item__tech">React · TypeScript · FastAPI · Python · LaTeX</p>
                     <div className="project-item__links">
-                        <a href="/work/job-agent.html" className="project-item__link-deep">
+                        <Link to="/work/job-agent" className="project-item__link-deep">
                             Deep dive
-                        </a>
+                        </Link>
                         <span className="project-item__link-sep" aria-hidden="true">
                             ·
                         </span>
@@ -95,9 +97,9 @@ export default function ProjectsPage() {
                     </p>
                     <p className="project-item__tech">MongoDB · NLP · Geo analytics</p>
                     <div className="project-item__links">
-                        <a href="/work/safesteps.html" className="project-item__link-deep">
+                        <Link to="/work/safesteps" className="project-item__link-deep">
                             Deep dive
-                        </a>
+                        </Link>
                         <span className="project-item__link-sep" aria-hidden="true">
                             ·
                         </span>

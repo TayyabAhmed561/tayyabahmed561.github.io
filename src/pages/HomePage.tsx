@@ -34,9 +34,9 @@ export default function HomePage() {
                     <Link to="/about" className="featured-highlight__action">
                         View Experience
                     </Link>
-                    <a href="/work/stealth-role.html" className="featured-highlight__action featured-highlight__action--secondary">
+                    <Link to="/work/stealth-role" className="featured-highlight__action featured-highlight__action--secondary">
                         View Deep Dive
-                    </a>
+                    </Link>
                 </div>
             </section>
 
@@ -47,24 +47,24 @@ export default function HomePage() {
                 </p>
                 <ul className="projects-deep-dives__list" role="list">
                     <li>
-                        <a href="/work/mindsync.html" className="projects-deep-dives__link">
+                        <Link to="/work/mindsync" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">MindSync</span>
                             <span className="projects-deep-dives__link-meta">EEG · limited labels · iteration &amp; evaluation</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/work/safesteps.html" className="projects-deep-dives__link">
+                        <Link to="/work/safesteps" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">SafeSteps</span>
                             <span className="projects-deep-dives__link-meta">NLP in the wild · imbalance · schema fixes</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/work/job-agent.html" className="projects-deep-dives__link">
+                        <Link to="/work/job-agent" className="projects-deep-dives__link">
                             <span className="projects-deep-dives__link-title">DraftPilot</span>
                             <span className="projects-deep-dives__link-meta">
                                 Multi-stage pipeline · scoring · human-in-the-loop
                             </span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -90,9 +90,9 @@ export default function HomePage() {
                             />
                         </div>
                         <div className="walkthrough-card__links">
-                            <a href="/work/mindsync.html" className="walkthrough-card__link">
+                            <Link to="/work/mindsync" className="walkthrough-card__link">
                                 Deep dive
-                            </a>
+                            </Link>
                             <span className="walkthrough-card__sep" aria-hidden="true">
                                 ·
                             </span>
@@ -152,9 +152,9 @@ export default function HomePage() {
                             />
                         </div>
                         <div className="walkthrough-card__links">
-                            <a href="/work/safesteps.html" className="walkthrough-card__link">
+                            <Link to="/work/safesteps" className="walkthrough-card__link">
                                 Deep dive
-                            </a>
+                            </Link>
                             <span className="walkthrough-card__sep" aria-hidden="true">
                                 ·
                             </span>

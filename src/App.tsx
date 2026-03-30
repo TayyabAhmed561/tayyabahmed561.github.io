@@ -14,6 +14,7 @@ import ExperiencePage from "./pages/ExperiencePage";
 import EducationPage from "./pages/EducationPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
+import DeepDivePage from "./pages/DeepDivePage";
 
 const SCRIPT_FILES = [
     "rising-particles.js",
@@ -69,6 +70,7 @@ export default function App() {
                     <Route path="education" element={<EducationPage />} />
                     <Route path="gallery" element={<GalleryPage />} />
                     <Route path="contact" element={<ContactPage />} />
+                    <Route path="work/:slug" element={<DeepDivePage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
             </Routes>
@@ -78,9 +80,9 @@ export default function App() {
                     {import.meta.env.PROD ? (
                         <p
                             className="site-footer__traffic"
-                            title="Totals stay in Google Analytics. A public live count would need a small backend or serverless counter."
+                            title="Visit counts are aggregated privately; there is no public view total on this static site."
                         >
-                            Aggregate traffic · GA4
+                            Aggregate traffic
                         </p>
                     ) : null}
                 </div>
