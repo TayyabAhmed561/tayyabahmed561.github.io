@@ -2925,18 +2925,6 @@ a.research-workspace__latest-jump {
     gap: 0.35rem 1.25rem;
 }
 
-.site-footer--shell .site-footer__traffic {
-    font-family: var(--font-sans);
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(130, 158, 188, 0.36);
-    margin: 0;
-    max-width: 16rem;
-    line-height: 1.35;
-}
-
 @media (max-width: 960px) {
     .app {
         grid-template-columns: 1fr;

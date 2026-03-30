@@ -77,14 +77,6 @@ export default function App() {
             <footer className="site-footer site-footer--shell">
                 <div className="site-footer-shell__row">
                     <p>© 2026 Tayyab Ahmed</p>
-                    {import.meta.env.PROD ? (
-                        <p
-                            className="site-footer__traffic"
-                            title="Visit counts are aggregated privately; there is no public view total on this static site."
-                        >
-                            Aggregate traffic
-                        </p>
-                    ) : null}
                 </div>
             </footer>
         </>
