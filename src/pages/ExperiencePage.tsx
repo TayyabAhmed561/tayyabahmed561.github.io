@@ -14,9 +14,6 @@ export default function ExperiencePage() {
                     <h3>R&amp;D Engineer</h3>
                     <p className="org">Vital Bio</p>
                     <p className="dates">2026 to Present</p>
-                    <ul>
-                        <li>building anything and everything</li>
-                    </ul>
                 </div>
                 <div className="experience-item">
                     <div className="experience-item__head">
