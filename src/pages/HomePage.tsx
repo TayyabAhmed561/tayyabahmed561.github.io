@@ -11,14 +11,6 @@ export default function HomePage() {
                 <h2 id="featured-role-title" className="featured-highlight__title">
                     R&amp;D Engineer, Vital Bio
                 </h2>
-                <p className="featured-highlight__subtitle">Biomedical data · Anomaly detection · Dashboards · ETL pipelines</p>
-                <p className="featured-highlight__desc">
-                    Company-wide analytical dashboards (Python, Streamlit, SQL, Redash) for real-time biomedical data
-                    analysis and root cause investigation during diagnostic instrument testing, custom ML models powering
-                    an automated QC checker that runs real-time outlier and anomaly detection across instrument data
-                    streams, and automated ETL pipelines for processing, validation, feature extraction, and quality
-                    control.
-                </p>
                 <div className="featured-highlight__actions">
                     <Link to="/about" className="featured-highlight__action">
                         View Experience
