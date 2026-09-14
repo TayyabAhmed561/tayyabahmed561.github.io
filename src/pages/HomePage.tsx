@@ -11,6 +11,7 @@ export default function HomePage() {
                 <h2 id="featured-role-title" className="featured-highlight__title">
                     R&amp;D Engineer, Vital Bio
                 </h2>
+                <p className="featured-highlight__subtitle">Current experience</p>
                 <div className="featured-highlight__actions">
                     <Link to="/about" className="featured-highlight__action">
                         View Experience
