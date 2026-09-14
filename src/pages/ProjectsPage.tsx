@@ -35,24 +35,9 @@ export default function ProjectsPage() {
             </div>
             <div className="project-list">
                 <article className="project-item">
-                    <div className="project-item__head">
-                        <h3 className="project-item__title">UniFlow</h3>
-                        <span className="project-item__tag">Full-Stack / Web Platform</span>
-                    </div>
-                    <p className="project-item__desc">
-                        Parses unstructured course syllabus PDFs and automatically generates a personalized schedule,
-                        deadline tracker, and GPA calculator. Engineered a regex-based document parsing engine that handles
-                        multiple institutional PDF formats. Implements Row Level Security, optimistic UI updates, and a
-                        themeable design system with 15+ visual themes. Integrated privacy-hardened analytics (PostHog) and
-                        error monitoring (Sentry) with no PII collection. Shipped as a PWA with push notifications and a
-                        Chrome extension companion app.
-                    </p>
-                    <p className="project-item__signals">
-                        Full-stack syllabus-to-dashboard platform for university students
-                    </p>
-                    <p className="project-item__tech">React · TypeScript · Vite · Supabase (Postgres, Auth, Edge Functions)</p>
+                    <h3 className="project-item__title">UniFlow</h3>
                     <div className="project-item__links">
-                        <a href="https://uniflow.study" target="_blank" rel="noopener noreferrer">
+                        <a href="https://uniflow.study/" target="_blank" rel="noopener noreferrer">
                             uniflow.study
                         </a>
                     </div>
