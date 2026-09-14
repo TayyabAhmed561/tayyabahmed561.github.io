@@ -25,7 +25,6 @@ export function LegacyHashRedirect() {
 
         const map: Record<string, string> = {
             featured: "/",
-            research: "/research",
             projects: "/projects",
             gallery: "/gallery",
             contact: "/contact",

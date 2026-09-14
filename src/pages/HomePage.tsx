@@ -7,35 +7,21 @@ export default function HomePage() {
             <p className="featured__lede">
                 A curated overview of applied machine learning systems, real-world experience, and technical deep dives.
             </p>
-            <Link to="/research" className="featured-research-teaser">
-                <span className="featured-research-teaser__main">
-                    <span className="featured-research-teaser__label">Research notes</span>
-                    <span className="featured-research-teaser__sep" aria-hidden="true">
-                        ·
-                    </span>
-                    <span className="featured-research-teaser__hint">data, evaluation, and systems</span>
-                </span>
-                <span className="featured-research-teaser__chevron" aria-hidden="true">
-                    →
-                </span>
-            </Link>
-
             <section className="featured-highlight" aria-labelledby="featured-role-title">
                 <h2 id="featured-role-title" className="featured-highlight__title">
-                    Machine Learning Engineer, Stealth AI Startup
+                    R&amp;D Engineer, Vital Bio
                 </h2>
-                <p className="featured-highlight__subtitle">Biomedical ML · Noisy data · Robust evaluation · Real-world systems</p>
+                <p className="featured-highlight__subtitle">Biomedical data · Anomaly detection · Dashboards · ETL pipelines</p>
                 <p className="featured-highlight__desc">
-                    Python/PyTorch computer vision for noisy biomedical imaging: CNN training on small heterogeneous
-                    datasets under tight validation, preprocessing and feature work for robustness and patient-level
-                    generalization, plus structured validation and error analysis for interpretable performance.
+                    Company-wide analytical dashboards (Python, Streamlit, SQL, Redash) for real-time biomedical data
+                    analysis and root cause investigation during diagnostic instrument testing, custom ML models powering
+                    an automated QC checker that runs real-time outlier and anomaly detection across instrument data
+                    streams, and automated ETL pipelines for processing, validation, feature extraction, and quality
+                    control.
                 </p>
                 <div className="featured-highlight__actions">
                     <Link to="/about" className="featured-highlight__action">
                         View Experience
-                    </Link>
-                    <Link to="/work/stealth-role" className="featured-highlight__action featured-highlight__action--secondary">
-                        View Deep Dive
                     </Link>
                 </div>
             </section>

@@ -7,8 +7,6 @@ import { bindPortfolioDomEffects } from "./initDomEffects";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { AppShell } from "./layouts/AppShell";
 import HomePage from "./pages/HomePage";
-import ResearchPage from "./pages/ResearchPage";
-import ResearchNotePage from "./pages/ResearchNotePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ExperiencePage from "./pages/ExperiencePage";
 import EducationPage from "./pages/EducationPage";
@@ -20,7 +18,6 @@ const SCRIPT_FILES = [
     "rising-particles.js",
     "perplexity-backgrounds.js",
     "film-strip.js",
-    "research-workspace.js",
 ] as const;
 
 let portfolioScriptsInjected = false;
@@ -63,8 +60,6 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<AppShell />}>
                     <Route index element={<HomePage />} />
-                    <Route path="research/:slug" element={<ResearchNotePage />} />
-                    <Route path="research" element={<ResearchPage />} />
                     <Route path="projects" element={<ProjectsPage />} />
                     <Route path="about" element={<ExperiencePage />} />
                     <Route path="education" element={<EducationPage />} />

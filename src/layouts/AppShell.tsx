@@ -72,15 +72,6 @@ export function AppShell() {
                                     ·
                                 </span>
                                 <NavLink
-                                    to="/research"
-                                    className={({ isActive }) => `intro__link${isActive ? " is-active" : ""}`}
-                                >
-                                    Research
-                                </NavLink>
-                                <span className="intro__links-sep" aria-hidden="true">
-                                    ·
-                                </span>
-                                <NavLink
                                     to="/projects"
                                     className={({ isActive }) => `intro__link${isActive ? " is-active" : ""}`}
                                 >
@@ -151,9 +142,6 @@ export function AppShell() {
                     <NavLink to="/" end role="tab" id="tab-featured" className={tabClass}>
                         Featured
                     </NavLink>
-                    <NavLink to="/research" role="tab" id="tab-research" className={tabClass}>
-                        Research
-                    </NavLink>
                     <NavLink to="/projects" role="tab" id="tab-projects" className={tabClass}>
                         Projects
                     </NavLink>
@@ -185,12 +173,6 @@ export function AppShell() {
                     <nav className="panel-footer-nav" aria-label="Section quick links">
                         <NavLink to="/" end className={footerLinkClass}>
                             Featured
-                        </NavLink>
-                        <span className="panel-footer-nav__sep" aria-hidden="true">
-                            ·
-                        </span>
-                        <NavLink to="/research" className={footerLinkClass}>
-                            Research
                         </NavLink>
                         <span className="panel-footer-nav__sep" aria-hidden="true">
                             ·

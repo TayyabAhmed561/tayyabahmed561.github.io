@@ -11,6 +11,14 @@ export default function ExperiencePage() {
             <p className="panel__label">Experience</p>
             <div className="experience-list">
                 <div className="experience-item">
+                    <h3>R&amp;D Engineer</h3>
+                    <p className="org">Vital Bio</p>
+                    <p className="dates">2026 to Present</p>
+                    <ul>
+                        <li>building anything and everything</li>
+                    </ul>
+                </div>
+                <div className="experience-item">
                     <div className="experience-item__head">
                         <h3>Machine Learning Engineer</h3>
                         <span className="experience-item__tag">
@@ -66,6 +74,11 @@ export default function ExperiencePage() {
                     </ul>
                 </div>
                 <div className="experience-item">
+                    <h3>Starting Lineup Volunteer</h3>
+                    <p className="org">FIFA World Cup 2026</p>
+                    <p className="dates">2026</p>
+                </div>
+                <div className="experience-item">
                     <div className="experience-item__head">
                         <h3>Software Engineering Intern</h3>
                         <span className="experience-item__tag">Cloud / Data Systems</span>
@@ -80,7 +93,7 @@ export default function ExperiencePage() {
                 <div className="experience-item">
                     <h3>Technical Mentor</h3>
                     <p className="org">FIRST Robotics / STEMOTICS</p>
-                    <p className="dates">2022 to 2025</p>
+                    <p className="dates">2023 to 2026</p>
                     <ul>
                         <li>Led robotics workshops on embedded systems, debugging, and system design</li>
                         <li>Mentored teams in navigation, performance optimization, and competition strategy</li>
